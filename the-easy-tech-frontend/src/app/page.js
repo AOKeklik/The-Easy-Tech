@@ -5,11 +5,14 @@ import PaymentGateway from "@/components/PaymentGateway/PaymentGateway"
 import Service from "@/components/Service/Service"
 import Slider from "@/components/Slider/Slider"
 
-import services from "@/data/service.json"
-import casestudies from "@/data/case-study.json"
 import PaymentGatewayService from "@/components/PaymentGatewayService/PaymentGatewayService"
 import FormRequest from "@/components/FormRequest/FormRequest"
-import Testimonials from "@/components/Testimonials/Testimonials"
+import Testimonials from "@/components/Testimonial/Testimonial"
+import Blog from "@/components/Blog/Blog"
+
+import services from "@/data/service.json"
+import casestudies from "@/data/case-study.json"
+import posts from "@/data/blog.json"
 
 export default function Home() {
     return (
@@ -27,6 +30,7 @@ export default function Home() {
                 <PaymentGatewayService />
                 <FormRequest />
                 <Testimonials />
+                <Blog posts={posts} />
             </main>
         </div>
     )
