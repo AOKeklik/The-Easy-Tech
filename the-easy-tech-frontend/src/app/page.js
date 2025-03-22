@@ -7,6 +7,7 @@ import Slider from "@/components/Slider/Slider"
 
 import services from "@/data/service.json"
 import casestudies from "@/data/case-study.json"
+import PaymentGatewayService from "@/components/PaymentGatewayService/PaymentGatewayService"
 
 export default function Home() {
     return (
@@ -21,6 +22,7 @@ export default function Home() {
                 <Service services={services} />
                 <PaymentGateway />
                 <CaseStudy casestudies={casestudies} />
+                <PaymentGatewayService />
             </main>
         </div>
     )
