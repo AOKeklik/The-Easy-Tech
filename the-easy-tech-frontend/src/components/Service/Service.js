@@ -23,7 +23,7 @@ const Service = ({services}) => {
                     >
                         {
                             services.length > 0 && services.slice(0,6).map((service,i)=>{
-                                return <ServiceItem {...{ isInView,service,i:i+1 }} />
+                                return <ServiceItem key={i} {...{ isInView,service,i:i+1 }} />
                             })
                         }
                     </div>                 

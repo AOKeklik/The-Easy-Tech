@@ -1,3 +1,4 @@
+import CaseStudy from "@/components/CaseStudy/CaseStudy"
 import NavBottom from "@/components/Header/NavBottom/NavBottom"
 import NavTop from "@/components/Header/NavTop/NavTop"
 import PaymentGateway from "@/components/PaymentGateway/PaymentGateway"
@@ -5,6 +6,7 @@ import Service from "@/components/Service/Service"
 import Slider from "@/components/Slider/Slider"
 
 import services from "@/data/service.json"
+import casestudies from "@/data/case-study.json"
 
 export default function Home() {
     return (
@@ -18,6 +20,7 @@ export default function Home() {
                 <Slider />
                 <Service services={services} />
                 <PaymentGateway />
+                <CaseStudy casestudies={casestudies} />
             </main>
         </div>
     )
