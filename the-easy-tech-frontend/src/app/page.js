@@ -8,6 +8,7 @@ import Slider from "@/components/Slider/Slider"
 import services from "@/data/service.json"
 import casestudies from "@/data/case-study.json"
 import PaymentGatewayService from "@/components/PaymentGatewayService/PaymentGatewayService"
+import FormRequest from "@/components/FormRequest/FormRequest"
 
 export default function Home() {
     return (
@@ -23,6 +24,7 @@ export default function Home() {
                 <PaymentGateway />
                 <CaseStudy casestudies={casestudies} />
                 <PaymentGatewayService />
+                <FormRequest />
             </main>
         </div>
     )
