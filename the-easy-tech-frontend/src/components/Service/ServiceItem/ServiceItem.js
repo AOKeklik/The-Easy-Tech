@@ -1,8 +1,22 @@
-import React from 'react'
+"use client"
+
+import React, { useRef } from 'react'
+import { useInView } from 'framer-motion'
 import Link from 'next/link'
 
 const ServiceItem = ({service,i}) => {
-    return <div className='service-item p-8 bg-white rounded-lg border border-line hover-box-shadow'>
+    const ref = useRef(null)
+    const isInView=useInView(ref,{once:true})
+
+    return <div 
+        className='service-item p-8 bg-white rounded-lg border border-line hover-box-shadow'
+        ref={ref}
+        style={{ 
+            transition:"all .7s cubic-bezier(.17,.55,.55,1) .3s",
+            transform:isInView ? "translateY(0px)" : "translateY(60px)",
+            opacity:isInView ? 1 : 0,
+        }}
+    >
         <Link className='service-item-main h-full' href="">
             <div className='heading flex items-center justify-between'>
                 <i className={`${service.icon} text-blue md:text-6xl text-5xl`}></i>

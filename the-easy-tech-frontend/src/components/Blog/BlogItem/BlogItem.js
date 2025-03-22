@@ -1,9 +1,24 @@
-import Link from 'next/link'
+"use client"
+
+import React, { useRef } from 'react'
+import { useInView } from 'framer-motion'
 import Image from 'next/image'
+import Link from 'next/link'
 import * as Icon from '@phosphor-icons/react/dist/ssr'
 
 const BlogItem = ({post,i}) => {
-    return <div className='blog-item'>
+    const ref = useRef(null)
+    const isInView=useInView(ref,{once:true})
+
+    return <div 
+        className='blog-item'
+        ref={ref}
+        style={{ 
+            transition:"all .7s cubic-bezier(.17,.55,.55,1) .3s",
+            transform:isInView ? "translateY(0px)" : "translateY(60px)",
+            opacity:isInView ? 1 : 0,
+        }}
+    >
         <Link className='blog-item-main h-full block bg-white border border-line overflow-hidden rounded-2xl hover-box-shadow duration-500' href="">
             <div className='bg-img w-full overflow-hidden'>
                 <Image width={5000} height={5000} className='w-full h-full block' src={post.img} /> 

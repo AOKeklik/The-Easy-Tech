@@ -13,6 +13,7 @@ import Blog from "@/components/Blog/Blog"
 import services from "@/data/service.json"
 import casestudies from "@/data/case-study.json"
 import posts from "@/data/blog.json"
+import Partner from "@/components/Partner/Partner"
 
 export default function Home() {
     return (
@@ -31,6 +32,7 @@ export default function Home() {
                 <FormRequest />
                 <Testimonials />
                 <Blog posts={posts} />
+                <Partner />
             </main>
         </div>
     )
