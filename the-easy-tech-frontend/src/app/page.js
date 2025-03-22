@@ -1,6 +1,9 @@
-import NavBottom from "@/components/Header/NavBottom/NavBottom";
-import NavTop from "@/components/Header/NavTop/NavTop";
-import Slider from "@/components/Slider/Slider";
+import NavBottom from "@/components/Header/NavBottom/NavBottom"
+import NavTop from "@/components/Header/NavTop/NavTop"
+import Service from "@/components/Service/Service"
+import Slider from "@/components/Slider/Slider"
+
+import services from "@/data/service.json"
 
 export default function Home() {
     return (
@@ -12,6 +15,7 @@ export default function Home() {
 
             <main className="content">
                 <Slider />
+                <Service services={services} />
             </main>
         </div>
     );

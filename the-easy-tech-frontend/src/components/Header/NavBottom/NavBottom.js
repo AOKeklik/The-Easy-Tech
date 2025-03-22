@@ -16,7 +16,7 @@ const NavBottom = () => {
     }
 
     return (
-        <div className={`header-menu bg-white ${fixedHeader ? 'fixed' : ''} `}>
+        <div className={`header-menu bg-white ${fixedHeader ? 'fixed' : ''}`}>
             <div className='container flex items-center justify-between h-20'>
                 <Link className='menu-left-block' href="/">
                     <Image
@@ -83,7 +83,7 @@ const NavBottom = () => {
                 </div> 
             </div>
 
-            <div id='menu-mobile-block' className={toggleMenu && "open"}>
+            <div id='menu-mobile-block' className={toggleMenu ? "open" : ""}>
                 <div className='menu-mobile-main'>
                     <div className='container'>
                         <ul className='menu-nav-mobile h-full pt-1 pb-1'>
