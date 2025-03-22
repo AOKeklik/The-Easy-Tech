@@ -4,16 +4,23 @@ import * as Icon from '@phosphor-icons/react/dist/ssr'
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 const NavBottom = () => {
     const pathname=usePathname()
     const [fixedHeader, setFixedHeader]=useState(false)
     const [toggleMenu, setToggleMenu]=useState(false)
 
-    const isPath = (path) => {
-        return pathname === path ? "active" : "";
-    }
+    useEffect(() => {
+        const handleScroll = () => {
+            setFixedHeader(window.scrollY > 50)
+        }
+
+        window.addEventListener("scroll", handleScroll)
+        return () => window.removeEventListener("scroll", handleScroll)
+    }, [])
+
+    const isPath = (path) => pathname === path ? "active" : ""
 
     return (
         <div className={`header-menu bg-white ${fixedHeader ? 'fixed' : ''}`}>

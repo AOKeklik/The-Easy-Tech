@@ -9,6 +9,7 @@ import services from "@/data/service.json"
 import casestudies from "@/data/case-study.json"
 import PaymentGatewayService from "@/components/PaymentGatewayService/PaymentGatewayService"
 import FormRequest from "@/components/FormRequest/FormRequest"
+import Testimonials from "@/components/Testimonials/Testimonials"
 
 export default function Home() {
     return (
@@ -25,6 +26,7 @@ export default function Home() {
                 <CaseStudy casestudies={casestudies} />
                 <PaymentGatewayService />
                 <FormRequest />
+                <Testimonials />
             </main>
         </div>
     )
