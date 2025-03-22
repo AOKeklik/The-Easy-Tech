@@ -9,11 +9,12 @@ import PaymentGatewayService from "@/components/PaymentGatewayService/PaymentGat
 import FormRequest from "@/components/FormRequest/FormRequest"
 import Testimonials from "@/components/Testimonial/Testimonial"
 import Blog from "@/components/Blog/Blog"
+import Partner from "@/components/Partner/Partner"
 
 import services from "@/data/service.json"
 import casestudies from "@/data/case-study.json"
 import posts from "@/data/blog.json"
-import Partner from "@/components/Partner/Partner"
+import Footer from "@/components/Footer/Footer"
 
 export default function Home() {
     return (
@@ -32,8 +33,13 @@ export default function Home() {
                 <FormRequest />
                 <Testimonials />
                 <Blog posts={posts} />
-                <Partner />
             </main>
+
+            <Partner />
+
+            <footer id="footer">
+                <Footer />
+            </footer>
         </div>
     )
 }
