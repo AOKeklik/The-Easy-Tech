@@ -1,13 +1,11 @@
-"use client"
-
+import useIsActive from '@/hooks/useIsActive';
 import * as Icon from '@phosphor-icons/react/dist/ssr'
 import Image from 'next/image'
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
 
 const NavBottom = () => {
-    const pathname=usePathname()
+    const isActiveItem = useIsActive
     const [fixedHeader, setFixedHeader]=useState(false)
     const [toggleMenu, setToggleMenu]=useState(false)
 
@@ -19,8 +17,6 @@ const NavBottom = () => {
         window.addEventListener("scroll", handleScroll)
         return () => window.removeEventListener("scroll", handleScroll)
     }, [])
-
-    const isPath = (path) => pathname === path ? "active" : ""
 
     return (
         <div className={`header-menu bg-white ${fixedHeader ? 'fixed' : ''}`}>
@@ -37,37 +33,37 @@ const NavBottom = () => {
                 </Link>
                 <div className='menu-center-block h-full'>
                     <ul className='menu-nav flex items-center xl:gap-2 h-full'>
-                        <li className={`nav-item h-full flex items-center justify-center home ${isPath("/")}`}>
+                        <li className={`nav-item h-full flex items-center justify-center home ${isActiveItem("/")}`}>
                             <Link className="nav-link text-title flex items-center gap-1" href="/">
                                 <span>Home</span>
                             </Link> 
                         </li>
 
-                        <li className={`nav-item h-full flex items-center justify-center home ${isPath("/about")}`}>
+                        <li className={`nav-item h-full flex items-center justify-center home ${isActiveItem("/about")}`}>
                             <Link className='nav-link text-title flex items-center gap-1' href="/about">
                                 <span>About Us</span>
                             </Link> 
                         </li>
 
-                        <li className={`nav-item h-full flex items-center justify-center home ${isPath("/service")}`}>
+                        <li className={`nav-item h-full flex items-center justify-center home ${isActiveItem("/service")}`}>
                             <Link className='nav-link text-title flex items-center gap-1' href="/service">
                                 <span>Our Services</span>
                             </Link> 
                         </li>
 
-                        <li className={`nav-item h-full flex items-center justify-center home ${isPath("/case-studies")}`}>
+                        <li className={`nav-item h-full flex items-center justify-center home ${isActiveItem("/case-studies")}`}>
                             <Link className='nav-link text-title flex items-center gap-1' href="/case-studies">
                                 <span>Case Studies</span>
                             </Link> 
                         </li>
 
-                        <li className={`nav-item h-full flex items-center justify-center home ${isPath("/blog")}`}>
+                        <li className={`nav-item h-full flex items-center justify-center home ${isActiveItem("/blog")}`}>
                             <Link className='nav-link text-title flex items-center gap-1' href="/blog">
                                 <span>Blog</span>
                             </Link> 
                         </li>
 
-                        <li className={`nav-item h-full flex items-center justify-center home ${isPath("/contact")}`}>
+                        <li className={`nav-item h-full flex items-center justify-center home ${isActiveItem("/contact")}`}>
                             <Link className='nav-link text-title flex items-center gap-1' href="/contact">
                                 <span>Contact Us</span>
                             </Link> 
@@ -94,37 +90,37 @@ const NavBottom = () => {
                 <div className='menu-mobile-main'>
                     <div className='container'>
                         <ul className='menu-nav-mobile h-full pt-1 pb-1'>
-                            <li className={`nav-item-mobile h-full flex-column gap-2 pt-2 pl-3 pr-3 pb-2 pointer ${isPath("/")}`}>
+                            <li className={`nav-item-mobile h-full flex-column gap-2 pt-2 pl-3 pr-3 pb-2 pointer ${isActiveItem("/")}`}>
                                 <a className='nav-link-mobile flex items-center justify-between' href='/'>
                                     <span className='body2 font-bold'>Home</span>
                                 </a>
                             </li>
 
-                            <li className={`nav-item-mobile h-full flex-column gap-2 pt-2 pl-3 pr-3 pb-2 pointer ${isPath("/about")}`}>
+                            <li className={`nav-item-mobile h-full flex-column gap-2 pt-2 pl-3 pr-3 pb-2 pointer ${isActiveItem("/about")}`}>
                                 <a className='nav-link-mobile flex items-center justify-between' href='/about'>
                                     <span className='body2 font-bold'>About Us</span>
                                 </a>
                             </li>
 
-                            <li className={`nav-item-mobile h-full flex-column gap-2 pt-2 pl-3 pr-3 pb-2 pointer ${isPath("/service")}`}>
+                            <li className={`nav-item-mobile h-full flex-column gap-2 pt-2 pl-3 pr-3 pb-2 pointer ${isActiveItem("/service")}`}>
                                 <a className='nav-link-mobile flex items-center justify-between' href='/service'>
                                     <span className='body2 font-bold'>Service</span>
                                 </a>
                             </li>
 
-                            <li className={`nav-item-mobile h-full flex-column gap-2 pt-2 pl-3 pr-3 pb-2 pointer ${isPath("/case-studies")}`}>
+                            <li className={`nav-item-mobile h-full flex-column gap-2 pt-2 pl-3 pr-3 pb-2 pointer ${isActiveItem("/case-studies")}`}>
                                 <a className='nav-link-mobile flex items-center justify-between' href='/case-studies'>
                                     <span className='body2 font-bold'>Case Studies </span>
                                 </a>
                             </li>
 
-                            <li className={`nav-item-mobile h-full flex-column gap-2 pt-2 pl-3 pr-3 pb-2 pointer ${isPath("/blog")}`}>
+                            <li className={`nav-item-mobile h-full flex-column gap-2 pt-2 pl-3 pr-3 pb-2 pointer ${isActiveItem("/blog")}`}>
                                 <a className='nav-link-mobile flex items-center justify-between' href='/blog'>
                                     <span className='body2 font-bold'>Blog</span>
                                 </a>
                             </li>
 
-                            <li className={`nav-item-mobile h-full flex-column gap-2 pt-2 pl-3 pr-3 pb-2 pointer ${isPath("/contact")}`}>
+                            <li className={`nav-item-mobile h-full flex-column gap-2 pt-2 pl-3 pr-3 pb-2 pointer ${isActiveItem("/contact")}`}>
                                 <a className='nav-link-mobile flex items-center justify-between' href='/contact'>
                                     <span className='body2 font-bold'>Contact Us</span>
                                 </a>

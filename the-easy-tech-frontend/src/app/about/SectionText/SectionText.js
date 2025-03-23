@@ -4,7 +4,7 @@ import React, { useRef } from 'react'
 import { useInView } from 'framer-motion'
 
 
-const SectionRight = () => {
+const SectionText = () => {
     const ref = useRef(null)
     const isInView=useInView(ref,{once:true})
 
@@ -30,4 +30,4 @@ const SectionRight = () => {
     </div> 
 };
 
-export default SectionRight;
+export default SectionText;

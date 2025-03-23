@@ -17,7 +17,11 @@ const ServiceItem = ({service,i}) => {
             opacity:isInView ? 1 : 0,
         }}
     >
-        <Link className='service-item-main h-full' href="">
+        <Link 
+            href="/service/service-detail/[slug]"
+            as={`/service/service-details/${service.title.toLowerCase().replace(/ /g,"-")}`} 
+            className='service-item-main h-full' 
+        >
             <div className='heading flex items-center justify-between'>
                 <i className={`${service.icon} text-blue md:text-6xl text-5xl`}></i>
                 <div className='number heading3 text-placehover text-slate-400'>{i}</div> 
