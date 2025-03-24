@@ -6,16 +6,14 @@ import NavTop from '@/components/Header/NavTop/NavTop'
 import Partner from '@/components/Partner/Partner'
 import Footer from '@/components/Footer/Footer';
 import BreadCrumb from '@/components/BreadCrumb/BreadCrumb'
-import Counter from '@/components/Counter/Counter'
-import Service from '@/components/Service/Service'
-import ImageTextBox from '@/components/ImageTextBox/ImageTextBox'
-import TextSection from '@/components/Sections/about/TextSection'
-import Loader from '@/components/Loader/Loader';
+import Loader from '@/components/Loader/Loader'
+import BlogList from '@/components/Sections/blog/BlogList'
 
-import services from "@/data/service.json"
+import blog from "@/data/blog.json"
 
 const page = () => {
-    const [data, setData] = useState([])
+    const [posts, setPosts] = useState([])
+    const [categories, setCategories] = useState([])
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
@@ -23,8 +21,10 @@ const page = () => {
             try{
                 setLoading(true)
 
-                await new Promise(resolve=>setTimeout(resolve, 1000))
-                await setData(services)
+                await new Promise(resolve=>setTimeout(resolve, 500))
+                await setPosts(blog)
+                await new Promise(resolve=>setTimeout(resolve, 500))
+                await setCategories(blog.map(({category})=> ({name: category})))
 
             } catch(err){
                 console.log(err)
@@ -35,28 +35,28 @@ const page = () => {
         fetch()
     }, [])
 
+
+    console.log(categories)
+
     return loading ? (
-        <Loader />
-    ) : ( 
+        <Loader /> 
+    ) : (
         <div className="overflow-x-hidden">
             <header id="header">
                 <NavTop />
                 <NavBottom />
             </header>
 
+
             <main className="content">
-            <BreadCrumb {...{
+                <BreadCrumb {...{
                     img:"/header.webp",
-                    title: "About Us",
-                    links: [{key: "",val:"About Us"}],
+                    title: "Our Blog",
+                    links: [{key: "",val:"Our Services"}],
                     desc: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. In repudiandae asperiores iure animi. Tenetur numquam sit facere consequuntur officia dolore commodi quod maiores sapiente voluptatum explicabo amet, est earum eveniet.",
                 }} />
-                <ImageTextBox 
-                    img="/assessment.webp"
-                    section={<TextSection />}
-                />
-                <Counter />
-                <Service services={data} />
+
+                <BlogList posts={posts} categories={categories} />
             </main>
 
             <Partner className='lg:mt-[100px] sm:mt-16 mt-10' /> 
@@ -66,6 +66,6 @@ const page = () => {
             </footer>
         </div>
     )
-}
+};
 
-export default page
+export default page;

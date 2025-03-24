@@ -8,12 +8,12 @@ const NavTop = () => {
                 <div className='left-block flex items-center'>
                     <div className='location flex items-center max-lg:hidden'>
                         <Icon.MapPin className='text-white text-xl' />
-                        <span className='ml-2 caption1 text-white'>Address</span> 
+                        <span className='ml-2 caption1 text-white'>ul. Kolegialna 15 09-410 Płock</span> 
                     </div>
 
                     <div className='mail lg:ml-7 flex items-center'>
                         <Icon.Envelope className='text-white text-xl'/>
-                        <span className='ml-2 caption1 text-white'>Email</span>  
+                        <span className='ml-2 caption1 text-white'>support@easylearningbd.com</span>  
                     </div> 
                 </div>
 

@@ -24,4 +24,4 @@ const SectionImage = ({img,direction}) => {
     </div>
 };
 
-export default SectionImage;
+export default SectionImage

@@ -5,7 +5,7 @@ import { useInView } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
 
-const SectionSideMenu = ({services}) => {
+const SectionSideMenu = ({posts}) => {
     const ref = useRef(null)
     const isInView=useInView(ref,{once:true})
 
@@ -23,12 +23,12 @@ const SectionSideMenu = ({services}) => {
             <div className='body3 text-secondary mt-2'>Lorem Ipsum passages, and more recently with desktop</div>
             <div className='list-nav mt-4'>
                 {
-                    services.slice(0,4).map((service,i) => <Link
-                        href="/service/service-detail/[slug]"
-                        as={`/service/service-details/${service.title.toLowerCase().replace(/ /g,"-")}`} 
-                        lassName='nav-item rounded-lg flex-between p-12' 
-                    >
-                            <div className='text-button text-secondary'>{service.title}</div>
+                        posts.slice(0,4).map((post,i) => <Link
+                            href="/blog/blog-detail/[slug]"
+                            as={`/blog/blog-details/${post.title.toLowerCase().replace(/ /g,"-")}`}
+                            className='nav-item rounded-lg flex-between p-12' 
+                        >
+                            <div className='text-button text-secondary'>{post.title}</div>
                         </Link>
                     )
                 }

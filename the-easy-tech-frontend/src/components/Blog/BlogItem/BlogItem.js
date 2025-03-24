@@ -19,7 +19,12 @@ const BlogItem = ({post,i}) => {
             opacity:isInView ? 1 : 0,
         }}
     >
-        <Link className='blog-item-main h-full block bg-white border border-line overflow-hidden rounded-2xl hover-box-shadow duration-500' href="">
+        <Link 
+            href="/blog/blog-detail/[slug]"
+            as={`/blog/blog-details/${post.title.toLowerCase().replace(/ /g,"-")}`}
+            className='blog-item-main h-full block bg-white border border-line overflow-hidden rounded-2xl hover-box-shadow duration-500' 
+        >
+
             <div className='bg-img w-full overflow-hidden'>
                 <Image width={5000} height={5000} className='w-full h-full block' src={post.img} /> 
             </div>
@@ -30,7 +35,7 @@ const BlogItem = ({post,i}) => {
 
                 <div className='date flex items-center gap-4 mt-2'>
                     <div className='author caption2 text-secondary'>
-                    by <span className='text-on-surface'>Admin</span>
+                    by <span className='text-on-surface'>{post.author}</span>
                     </div>
                     <div className='item-date flex items-center'>
                         <Icon.CalendarBlank weight='bold'/>

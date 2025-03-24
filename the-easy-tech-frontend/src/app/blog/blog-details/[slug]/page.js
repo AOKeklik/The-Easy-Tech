@@ -8,11 +8,11 @@ import NavTop from '@/components/Header/NavTop/NavTop'
 import Partner from '@/components/Partner/Partner'
 import Footer from '@/components/Footer/Footer';
 import BreadCrumb from '@/components/BreadCrumb/BreadCrumb'
-import SideMenuSection from '@/components/Sections/service/SideMenuSection'
+import SideMenuSection from '@/components/Sections/blog/SideMenuSection'
 import Loader from '@/components/Loader/Loader'
-import Service from '@/components/Service/Service'
+import Blog from '@/components/Blog/Blog'
 
-import services from "@/data/service.json"
+import blog from "@/data/blog.json"
 
 const page = () => {
     const [data, setData] = useState([])
@@ -24,7 +24,7 @@ const page = () => {
                 setLoading(true)
 
                 await new Promise(resolve=>setTimeout(resolve, 1000))
-                await setData(services)
+                await setData(blog)
 
             } catch(err){
                 console.log(err)
@@ -48,8 +48,8 @@ const page = () => {
             <main className="content">
             <BreadCrumb {...{
                     img:"/header.webp",
-                    title: "Our Services Detail",
-                    links: [{key: "/service",val:"Our Services"}, {key: "",val:"Service"}],
+                    title: "Blog Detail",
+                    links: [{key: "/blog",val:"Blog"}, {key: "",val:"Post"}],
                     desc: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. In repudiandae asperiores iure animi. Tenetur numquam sit facere consequuntur officia dolore commodi quod maiores sapiente voluptatum explicabo amet, est earum eveniet.",
                 }} />
 
@@ -67,12 +67,12 @@ const page = () => {
                                     </div> 
                                 </div>
                             </div>
-                            <SideMenuSection services={data} />
+                            <SideMenuSection posts={data} />
                         </div> 
                     </div> 
                 </div>
 
-                <Service services={data} />
+                <Blog posts={data} />
             </main>
 
             <Partner className='lg:mt-[100px] sm:mt-16 mt-10' /> 

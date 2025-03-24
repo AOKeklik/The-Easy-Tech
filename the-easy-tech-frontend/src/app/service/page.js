@@ -7,7 +7,7 @@ import NavTop from '@/components/Header/NavTop/NavTop'
 import Partner from '@/components/Partner/Partner'
 import Footer from '@/components/Footer/Footer';
 import BreadCrumb from '@/components/BreadCrumb/BreadCrumb'
-import SectionText from './SectionText/SectionText'
+import SectionText from '@/components/Sections/service/SectionText'
 import ImageTextBox from '@/components/ImageTextBox/ImageTextBox'
 import Service from '@/components/Service/Service'
 import Loader from '@/components/Loader/Loader'
@@ -19,12 +19,20 @@ const page = () => {
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
-        const timer = setTimeout(() => {
-            setData(services)
-            setLoading(false)
-        }, 1000)
+        const fetch = async () => {
+            try{
+                setLoading(true)
 
-        return () => clearTimeout(timer)
+                await new Promise(resolve=>setTimeout(resolve, 1000))
+                await setData(services)
+
+            } catch(err){
+                console.log(err)
+            }finally{
+                setLoading(false)
+            }
+        }
+        fetch()
     }, [])
 
     return loading ? (
@@ -40,7 +48,7 @@ const page = () => {
             <main className="content">
             <BreadCrumb {...{
                     img:"/header.webp",
-                    title: "Lorem ipsum dolor sit amet.",
+                    title: "Our Services",
                     links: [{key: "",val:"Our Services"}],
                     desc: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. In repudiandae asperiores iure animi. Tenetur numquam sit facere consequuntur officia dolore commodi quod maiores sapiente voluptatum explicabo amet, est earum eveniet.",
                 }} />

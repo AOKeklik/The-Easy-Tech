@@ -25,12 +25,20 @@ export default function Home() {
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
-        const timer = setTimeout(() => {
-            setData(services)
-            setLoading(false)
-        }, 1000)
+        const fetch = async () => {
+            try{
+                setLoading(true)
 
-        return () => clearTimeout(timer)
+                await new Promise(resolve=>setTimeout(resolve, 1000))
+                await setData(services)
+
+            } catch(err){
+                console.log(err)
+            }finally{
+                setLoading(false)
+            }
+        }
+        fetch()
     }, [])
 
     return loading ? (
