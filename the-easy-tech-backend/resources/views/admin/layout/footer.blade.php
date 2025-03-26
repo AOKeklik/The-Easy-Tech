@@ -9,19 +9,30 @@
         <!--=============================
                     LOADER
         ==============================-->
-       
-       <!-- Vendor -->
+
+        {{-- basic --}}
         <script src="{{ asset("assets-admin/libs/jquery/jquery.min.js") }}"></script>
-        <script src="{{ asset("assets-admin/libs/bootstrap/js/bootstrap.bundle.min.js") }}"></script>
+        <script src="{{ asset("assets-admin/libs/bootstrap/js/bootstrap.bundle.min.js") }}"></script> 
         <script src="{{ asset("assets-admin/libs/simplebar/simplebar.min.js") }}"></script>
         <script src="{{ asset("assets-admin/libs/node-waves/waves.min.js") }}"></script>
         <script src="{{ asset("assets-admin/libs/waypoints/lib/jquery.waypoints.min.js") }}"></script>
         <script src="{{ asset("assets-admin/libs/jquery.counterup/jquery.counterup.min.js") }}"></script>
         <script src="{{ asset("assets-admin/libs/feather-icons/feather.min.js") }}"></script>
-        <script src="{{ asset("assets-admin/libs/iziToast.min.js") }}" type="text/javascript"></script>
+
+        {{-- analytics --}}
         <script src="{{ asset("assets-admin/libs/apexcharts/apexcharts.min.js") }}"></script>
-        <script src="{{ asset("https://apexcharts.com/samples/assets/stock-prices.js") }}"></script>
+        <script src="https://apexcharts.com/samples/assets/stock-prices.js"></script>
         <script src="{{ asset("assets-admin/js/pages/analytics-dashboard.init.js") }}"></script>
+        
+        {{-- datatable --}}
+        <script src="{{ asset("assets-admin/libs/datatables.min.js") }}"></script>
+
+        {{-- izitoast --}}
+        <script src="{{ asset("assets-admin/libs/iziToast.min.js") }}" type="text/javascript"></script>
+        
+        {{-- switch button --}}
+        <script src="{{ asset("assets-admin/libs/bootstrap-switch-button.min.js") }}" type="text/javascript"></script>
+
 
         <!-- App js-->
         <script src="{{ asset("assets-admin/js/app.js") }}"></script>
@@ -45,6 +56,8 @@
             })
         </script>
         @endif
+
+        @include("admin.layout.global-js")
         
         @stack("scripts")
     </body>

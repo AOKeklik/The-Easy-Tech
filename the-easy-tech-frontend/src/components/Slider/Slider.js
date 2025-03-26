@@ -54,7 +54,7 @@ const Slider = () => {
                                         <div className='heading2'>
                                             <div className='relative overflow-hidden'>
                                                 <span className='block relative overflow-hidden'>Lorem, ipsum.</span>
-                                                <span className='block absolute top-0 left-0 w-full h-full'>Lorem, ipsum dolor.</span>
+                                                <span className='block absolute top-0 left-0 w-full h-full'>Lorem, ipsum.</span>
                                             </div> 
                                         </div>
 
@@ -89,8 +89,8 @@ const Slider = () => {
                                     <div className='text-content flex-column-between'>
                                         <div className='heading2'>
                                             <div className='relative overflow-hidden'>
-                                                <span className='block relative overflow-hidden'>Lorem, ipsum dolor.</span>
-                                                <span className='block absolute top-0 left-0 w-full h-full'>Lorem ipsum dolor sit amet.</span>
+                                                <span className='block relative overflow-hidden'>Lorem, ipsum.</span>
+                                                <span className='block absolute top-0 left-0 w-full h-full'>Lorem ipsum.</span>
                                             </div> 
                                         </div>
 

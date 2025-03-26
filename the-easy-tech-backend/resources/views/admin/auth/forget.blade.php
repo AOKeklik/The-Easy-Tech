@@ -107,7 +107,7 @@
 
                     const result = await $.ajax({
                         type: "POST",
-                        url: "{{ route('admin.submit.forget') }}",
+                        url: "{{ route('admin.forget.submit') }}",
                         data: formData,
                         contentType: false,
                         processData: false,

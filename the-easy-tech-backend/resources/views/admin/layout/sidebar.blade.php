@@ -44,17 +44,17 @@
 
                 <li>
                     <a href="#sidebarAuth" data-bs-toggle="collapse">
-                        <i data-feather="users"></i>
-                        <span> Authentication </span>
+                        <i data-feather="sliders"></i>
+                        <span> Slider </span>
                         <span class="menu-arrow"></span>
                     </a>
                     <div class="collapse" id="sidebarAuth">
                         <ul class="nav-second-level">
                             <li>
-                                <a href="auth-login.html" class="tp-link">Log In</a>
+                                <a href="{{ route("admin.slider.view") }}" class="tp-link">Slides</a>
                             </li>
                             <li>
-                                <a href="auth-register.html" class="tp-link">Register</a>
+                                <a href="{{ route("admin.slider.add.view") }}" class="tp-link">Add Slide</a>
                             </li>
                         </ul>
                     </div>

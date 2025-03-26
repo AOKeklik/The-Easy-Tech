@@ -10,15 +10,15 @@ use Illuminate\Http\Request;
 
 class AdminAuthController extends Controller
 {
-    public function view_signin():View
+    public function signin_view():View
     {
         return view("admin.auth.signin");
     }
-    public function view_forget():View
+    public function forget_view():View
     {
         return view("admin.auth.forget");
     }
-    public function view_reset(Request $request)
+    public function reset_view(Request $request)
     {
         try{
             $admin = User::where("email", $request->email)->first();
@@ -31,12 +31,12 @@ class AdminAuthController extends Controller
 
             return view("admin.auth.reset",["token"=>$request->token,"email"=>$request->email]);
         }catch(\Exception $err){
-            return redirect()->route("admin.view.signin")->with("error",$err->getMessage());
+            return redirect()->route("admin.signin.view")->with("error",$err->getMessage());
         }
     }
 
 
-    public function submit_signin(Request $request)
+    public function signin_submit(Request $request)
     {
         try {
             $validator = \Validator::make($request->all(), [
@@ -61,7 +61,7 @@ class AdminAuthController extends Controller
             return response()->json(["error" => ["message" =>$err->getMessage()]]);
         }
     }
-    public function submit_forget(Request $request)
+    public function forget_submit(Request $request)
     {
         try {
             $validator = \Validator::make($request->all(), [
@@ -90,12 +90,12 @@ class AdminAuthController extends Controller
     
             \Mail::to($request->email)->send(new AdminEmail($subject,$message));
             
-            return response()->json(["success"=>["message"=>"Please check your email and follow the steps there!","redirect"=>route("admin.view.signin")]]);
+            return response()->json(["success"=>["message"=>"Please check your email and follow the steps there!","redirect"=>route("admin.signin.view")]]);
         }catch(\Exception $err){
             return response()->json(["error" => ["message" =>$err->getMessage()]]);
         }
     }
-    public function submit_reset(Request $request)
+    public function reset_submit(Request $request)
     {
         try{
             $validator = \Validator::make($request->all(), [
@@ -121,19 +121,19 @@ class AdminAuthController extends Controller
             if(!$admin->update())
                 throw new \Exception("Failed to update user details. Please try again.");
     
-            return response()->json(["success"=>["message"=>"Password has been updated usccessfully!","redirect"=>route("admin.view.signin")]]);
+            return response()->json(["success"=>["message"=>"Password has been updated usccessfully!","redirect"=>route("admin.signin.view")]]);
         }catch(\Exception $err){
             return response()->json(["error" => ["message" =>$err->getMessage()]]);
         }
     }
-    public function submit_signout()
+    public function signout_submit()
     {
         try{
             auth()->logout();
             session()->invalidate();
             session()->regenerateToken();
 
-            return response()->json(["success"=>["message"=>"Successfully logged out.","redirect"=>route("admin.view.signin")]]);
+            return response()->json(["success"=>["message"=>"Successfully logged out.","redirect"=>route("admin.signin.view")]]);
         }catch(\Exception $err){
             return response()->json(["error" => ["message" =>$err->getMessage()]]);
         }

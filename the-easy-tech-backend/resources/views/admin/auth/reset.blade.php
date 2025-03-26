@@ -112,7 +112,7 @@
 
                     const result = await $.ajax({
                         type: "POST",
-                        url: "{{ route('admin.submit.reset') }}",
+                        url: "{{ route('admin.reset.submit') }}",
                         data: formData,
                         contentType: false,
                         processData: false,
