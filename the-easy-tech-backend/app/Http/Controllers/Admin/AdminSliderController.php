@@ -45,15 +45,15 @@ class AdminSliderController extends Controller
             if(!$validator->passes())
 	            return response()->json(["form_error"=>["message"=>$validator->errors()->toArray()]]);
     
-            $slide=new Slider();
-            $image = $imageService->uploadSliderPhoto($request);
+            $slider=new Slider();
+            $image = $imageService->uploadPhoto($request,$slider,"slider");
     
-            $slide->image=$image;
-            $slide->title=$request->title;
-            $slide->desc=$request->desc;
-            $slide->button_link=$request->button_link;
+            $slider->image=$image;
+            $slider->title=$request->title;
+            $slider->desc=$request->desc;
+            $slider->button_link=$request->button_link;
     
-            if(!$slide->save())
+            if(!$slider->save())
                 throw new Exception("Failed to save slide."); 
     
             return response()->json(["success"=>["message"=>"Slide added successfully.","redirect"=>route("admin.slider.view")]]);
@@ -73,19 +73,19 @@ class AdminSliderController extends Controller
             if(!$validator->passes())
 	            return response()->json(["form_error"=>["message"=>$validator->errors()->toArray()]]);
     
-            $slide=Slider::find($request->slider_id);
+            $slider=Slider::find($request->slider_id);
 
-            if(!$slide)
+            if(!$slider)
                 throw new Exception("Slider not found."); 
 
-            $image = $imageService->updateSliderPhoto($request,$slide);
+            $image = $imageService->uploadPhoto($request,$slider,"slider");
     
-            $slide->image=$image;
-            $slide->title=$request->title;
-            $slide->desc=$request->desc;
-            $slide->button_link=$request->button_link;
+            $slider->image=$image;
+            $slider->title=$request->title;
+            $slider->desc=$request->desc;
+            $slider->button_link=$request->button_link;
     
-            if(!$slide->save())
+            if(!$slider->save())
                 throw new Exception("Failed to update slide."); 
     
             return response()->json(["success"=>["message"=>"Slide updated successfully.","redirect"=>route("admin.slider.view")]]);
@@ -104,14 +104,14 @@ class AdminSliderController extends Controller
             if(!$validator->passes())
                 return response()->json(["error" => ["message" => $validator->errors()->first()]]);
     
-            $slide=Slider::find($request->slider_id);
+            $slider=Slider::find($request->slider_id);
     
-            if(!$slide)
+            if(!$slider)
                 throw new Exception("Slide not found.");
     
-            $slide->status=$request->status;
+            $slider->status=$request->status;
     
-            if(!$slide->save())
+            if(!$slider->save())
                 throw new Exception("Failed to update slide status.");
     
             return response()->json(["success"=>["message"=>"Slide status updated successfully."]]);
@@ -128,15 +128,15 @@ class AdminSliderController extends Controller
             if(!$validator->passes())
                 return response()->json(["error" => ["message" => $validator->errors()->first()]]);
     
-            $slide=Slider::find($request->slider_id);
+            $slider=Slider::find($request->slider_id);
     
-            if(!$slide)
+            if(!$slider)
                  throw new Exception("Slide not found.");
     
-            if(is_file(public_path("uploads/slider/").$slide->image))
-                unlink(public_path("uploads/slider/").$slide->image);
+            if(is_file(public_path("uploads/slider/").$slider->image))
+                unlink(public_path("uploads/slider/").$slider->image);
     
-            if(!$slide->delete())
+            if(!$slider->delete())
                  throw new Exception("Failed to delete the slide.");
     
             return response()->json(["success"=>["message"=>"The slide deleted successfully."]]);

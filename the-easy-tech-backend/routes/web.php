@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AdminAuthController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AdminProfileController;
+use App\Http\Controllers\Admin\AdminServiceController;
 use App\Http\Controllers\Admin\AdminSliderController;
 use Illuminate\Support\Facades\Route;
 
@@ -51,7 +52,7 @@ Route::prefix("admin")->middleware("admin.authenticate")->group(function () {
     });
 
     /* service */
-    Route::controller(AdminSliderController::class)->group(function(){
+    Route::controller(AdminServiceController::class)->group(function(){
         Route::get("service","index")->name("admin.service.view");
         Route::get("service/table", "service_table_view")->name("admin.service.table.view");
         Route::get("service/add", "service_add_view")->name("admin.service.add.view");

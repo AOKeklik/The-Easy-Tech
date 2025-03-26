@@ -10,11 +10,15 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
         <!-- App Css -->
+        
         <link rel="shortcut icon" href="{{ asset("assets-admin/images/favicon.ico") }}">
+        <link href="{{ asset("assets-admin/libs/bootstrap/css/bootstrap.min.css") }}" rel="stylesheet" type="text/css" />
         <link href="{{ asset("assets-admin/css/icons.min.css") }}" rel="stylesheet" type="text/css" />
         <link rel="stylesheet" href="{{ asset("assets-admin/css/iziToast.min.css") }}">
         <link rel="stylesheet" href="{{ asset("assets-admin/css/bootstrap-switch-button.min.css") }}">
         <link rel="stylesheet" href="{{ asset("assets-admin/css/datatables.min.css") }}">
+        <link rel="stylesheet" href="{{ asset("assets-admin/libs/summernote-0.9.0-dist/summernote-bs5.css") }}">
+        <link rel="stylesheet" href="{{ asset("assets-admin/libs/summernote-0.9.0-dist/summernote-lite.css") }}">
         <link href="{{ asset("assets-admin/css/app.css") }}" rel="stylesheet" type="text/css" id="app-style" />
         <link href="{{ asset("assets-admin/css/style.css") }}" rel="stylesheet" type="text/css" id="app-style" />
         

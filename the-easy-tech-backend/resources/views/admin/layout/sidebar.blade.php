@@ -61,18 +61,18 @@
                 </li>
 
                 <li>
-                    <a href="#sidebarError" data-bs-toggle="collapse">
-                        <i data-feather="alert-octagon"></i>
-                        <span> Error Pages </span>
+                    <a href="#sidebarAuth" data-bs-toggle="collapse">
+                        <i data-feather="tool"></i>
+                        <span> Service </span>
                         <span class="menu-arrow"></span>
                     </a>
-                    <div class="collapse" id="sidebarError">
+                    <div class="collapse" id="sidebarAuth">
                         <ul class="nav-second-level">
                             <li>
-                                <a href="error-404.html" class="tp-link">Error 404</a>
+                                <a href="{{ route("admin.service.view") }}" class="tp-link">Services</a>
                             </li>
                             <li>
-                                <a href="error-500.html" class="tp-link">Error 500</a>
+                                <a href="{{ route("admin.service.add.view") }}" class="tp-link">Add Service</a>
                             </li>
                         </ul>
                     </div>

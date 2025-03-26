@@ -18,20 +18,18 @@
         <script src="{{ asset("assets-admin/libs/waypoints/lib/jquery.waypoints.min.js") }}"></script>
         <script src="{{ asset("assets-admin/libs/jquery.counterup/jquery.counterup.min.js") }}"></script>
         <script src="{{ asset("assets-admin/libs/feather-icons/feather.min.js") }}"></script>
-
         {{-- analytics --}}
         <script src="{{ asset("assets-admin/libs/apexcharts/apexcharts.min.js") }}"></script>
         <script src="https://apexcharts.com/samples/assets/stock-prices.js"></script>
         <script src="{{ asset("assets-admin/js/pages/analytics-dashboard.init.js") }}"></script>
-        
         {{-- datatable --}}
         <script src="{{ asset("assets-admin/libs/datatables.min.js") }}"></script>
-
         {{-- izitoast --}}
         <script src="{{ asset("assets-admin/libs/iziToast.min.js") }}" type="text/javascript"></script>
-        
         {{-- switch button --}}
         <script src="{{ asset("assets-admin/libs/bootstrap-switch-button.min.js") }}" type="text/javascript"></script>
+        {{-- editor --}}
+        <script src="{{ asset("assets-admin/libs/summernote-0.9.0-dist/summernote-bs5.js") }}" type="text/javascript"></script>
 
 
         <!-- App js-->

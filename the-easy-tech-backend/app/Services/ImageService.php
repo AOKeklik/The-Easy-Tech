@@ -31,29 +31,11 @@ class ImageService
             throw $err;
         }
     }
-    public function uploadSliderPhoto($request)
+    public function uploadPhoto($request,$table,$path)
     {
         try{
-            $image = $request->file("image");
-            $uploadPath = "uploads/slider/";
-
-            if($request->hasFile("image")){
-                if(is_file(public_path($uploadPath).$image))
-                    unlink(public_path($uploadPath).$image);
-
-                $image=$this->processImage($image,$uploadPath);
-            }
-
-            return $image;
-        }catch(Exception $err){
-            throw $err;
-        }
-    }
-    public function updateSliderPhoto($request,$slider)
-    {
-        try{
-            $image = $slider->image;
-            $uploadPath = "uploads/slider/";
+            $image = $table?->image ?? null;
+            $uploadPath = "uploads/".$path."/";
 
             if($request->hasFile("image")){
                 $request->validate([
@@ -73,7 +55,6 @@ class ImageService
             throw $err;
         }
     }
-
     protected function processImage($file, $uploadPath)
     {
         if(!is_dir($uploadPath))

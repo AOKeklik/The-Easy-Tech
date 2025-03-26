@@ -43,7 +43,7 @@
                             </div>
                             <div class="mb-3">
                                 <label for="desc" class="form-label">Desc</label>
-                                <textarea id="desc" name="desc" class="form-control" rows="5" spellcheck="false">{{ $slider->desc }}</textarea>
+                                <textarea id="desc" name="desc" class="summernote form-control" rows="5" spellcheck="false">{{ $slider->desc }}</textarea>
                                 <small data-app-alert="slider-store-desc" class="form-text text-danger"></small>
                             </div> 
                             <div class="mb-3">
