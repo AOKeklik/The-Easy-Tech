@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\AdminGatewaytwoController;
 use App\Http\Controllers\Admin\AdminProfileController;
 use App\Http\Controllers\Admin\AdminServiceController;
 use App\Http\Controllers\Admin\AdminSliderController;
+use App\Http\Controllers\Admin\AdminTestimonialController;
 use Illuminate\Support\Facades\Route;
 
 /* ********** ADMIN *********** */
@@ -77,6 +78,18 @@ Route::prefix("admin")->middleware("admin.authenticate")->group(function () {
         Route::get("gatewaytwo/edit","gatewaytwo_edit_view")->name("admin.gatewaytwo.edit.view");
         Route::post("gatewaytwo/update", "gatewaytwo_update")->name("admin.gatewaytwo.update");
         Route::post("gatewaytwo/status/update", "gatewaytwo_status_update")->name("admin.gatewaytwo.status.update");
+    });
+
+    /* testimonial */
+    Route::controller(AdminTestimonialController::class)->group(function(){
+        Route::get("testimonial","index")->name("admin.testimonial.view");
+        Route::get("testimonial/table", "testimonial_table_view")->name("admin.testimonial.table.view");
+        Route::get("testimonial/add", "testimonial_add_view")->name("admin.testimonial.add.view");
+        Route::get("testimonial/edit/{testimonial_id}", "testimonial_edit_view")->name("admin.testimonial.edit.view");
+        Route::post("testimonial/store", "testimonial_store")->name("admin.testimonial.store");
+        Route::post("testimonial/update", "testimonial_update")->name("admin.testimonial.update");
+        Route::post("testimonial/status/update", "testimonial_status_update")->name("admin.testimonial.status.update");
+        Route::post("testimonial/delete", "testimonial_delete")->name("admin.testimonial.delete");
     });
 });
 

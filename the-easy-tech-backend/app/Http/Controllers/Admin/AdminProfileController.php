@@ -12,7 +12,8 @@ use App\Services\ImageService;
 
 class AdminProfileController extends Controller
 {
-    public function index():View{
+    public function index():View
+    {
         return view("admin.profile.index");
     }
 

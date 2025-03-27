@@ -13,18 +13,22 @@ require '../vendor/autoload.php';
 
 class AdminServiceController extends Controller
 {
-    public function index() :View{
+    public function index() :View
+    {
         $services=Service::orderBy("id","desc")->get();
         return view("admin.service.index",compact("services"));
     }
-    public function service_table_view() :View{
+    public function service_table_view() :View
+    {
         $services=Service::orderBy("id","desc")->get();
         return view("admin.service.table",compact("services"));
     }
-    public function service_add_view() :View{
+    public function service_add_view() :View
+    {
         return view("admin.service.add");
     }
-    public function service_edit_view($service_id){
+    public function service_edit_view($service_id)
+    {
         $service=Service::find($service_id);
 
         if(!$service)
@@ -130,7 +134,8 @@ class AdminServiceController extends Controller
             return response()->json(["error"=>["message"=>$err->getMessage()]]);
         }
     }
-    public function service_delete(Request $request){
+    public function service_delete(Request $request)
+    {
         try{
             $validator = \Validator::make($request->all(), [
                 "service_id" => "required|numeric|exists:services,id"

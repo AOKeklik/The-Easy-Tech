@@ -40,7 +40,7 @@
                     </a>
                 </li> -->
 
-                <li class="menu-title">Pages</li>
+                <li class="menu-title">Sections</li>
 
                 <li>
                     <a href="#slider" data-bs-toggle="collapse">
@@ -96,43 +96,26 @@
                     </div>
                 </li>
 
-                <li class="menu-title mt-2">General</li>
-
                 <li>
-                    <a href="#sidebarBaseui" data-bs-toggle="collapse">
-                        <i data-feather="package"></i>
-                        <span> Components </span>
+                    <a href="#testimonial" data-bs-toggle="collapse">
+                        <i data-feather="credit-card"></i>
+                        <span> Testimonial </span>
                         <span class="menu-arrow"></span>
                     </a>
-                    <div class="collapse" id="sidebarBaseui">
+                    <div class="collapse" id="testimonial">
                         <ul class="nav-second-level">
                             <li>
-                                <a href="ui-accordions.html" class="tp-link">Accordions</a>
+                                <a href="{{ route("admin.testimonial.view") }}" class="tp-link">Testimonials</a>
                             </li>
                             <li>
-                                <a href="ui-alerts.html" class="tp-link">Alerts</a>
+                                <a href="{{ route("admin.testimonial.add.view") }}" class="tp-link">Add Testimonial</a>
                             </li>
                         </ul>
                     </div>
                 </li>
 
-                <li>
-                    <a href="#sidebarMaps" data-bs-toggle="collapse">
-                        <i data-feather="map"></i>
-                        <span> Maps </span>
-                        <span class="menu-arrow"></span>
-                    </a>
-                    <div class="collapse" id="sidebarMaps">
-                        <ul class="nav-second-level">
-                            <li>
-                                <a href="maps-google.html" class="tp-link">Google Maps</a>
-                            </li>
-                            <li>
-                                <a href="maps-vector.html" class="tp-link">Vector Maps</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
+                <li class="menu-title mt-2">Pages</li>
+
             </ul>
         </div>
         <!-- End Sidebar -->

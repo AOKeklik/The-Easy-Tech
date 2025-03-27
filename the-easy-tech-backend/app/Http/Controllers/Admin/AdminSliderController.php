@@ -11,18 +11,22 @@ use Illuminate\Http\Request;
 
 class AdminSliderController extends Controller
 {
-    public function index() :View{
+    public function index() :View
+    {
         $slides=Slider::orderBy("id","desc")->get();
         return view("admin.slider.index",compact("slides"));
     }
-    public function slider_table_view() :View{
+    public function slider_table_view() :View
+    {
         $slides=Slider::orderBy("id","desc")->get();
         return view("admin.slider.table",compact("slides"));
     }
-    public function slider_add_view() :View{
+    public function slider_add_view() :View
+    {
         return view("admin.slider.add");
     }
-    public function slider_edit_view($slider_id){
+    public function slider_edit_view($slider_id)
+    {
         $slider=Slider::find($slider_id);
 
         if(!$slider)
@@ -119,7 +123,8 @@ class AdminSliderController extends Controller
             return response()->json(["error"=>["message"=>$err->getMessage()]]);
         }
     }
-    public function slider_delete(Request $request){
+    public function slider_delete(Request $request)
+    {
         try{
             $validator = \Validator::make($request->all(), [
                 "slider_id" => "required|numeric|exists:sliders,id"
