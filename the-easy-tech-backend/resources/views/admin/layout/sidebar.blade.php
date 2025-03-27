@@ -78,6 +78,13 @@
                     </div>
                 </li>
 
+                <li>
+                    <a href="{{ route("admin.gatewayone.edit.view") }}" class="tp-link">
+                        <i data-feather="credit-card"></i>
+                        <span> Getawayone </span>
+                    </a>
+                </li>
+
                 <li class="menu-title mt-2">General</li>
 
                 <li>
