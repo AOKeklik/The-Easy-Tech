@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AdminAuthController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AdminGatewayoneController;
+use App\Http\Controllers\Admin\AdminGatewaytwoController;
 use App\Http\Controllers\Admin\AdminProfileController;
 use App\Http\Controllers\Admin\AdminServiceController;
 use App\Http\Controllers\Admin\AdminSliderController;
@@ -69,6 +70,13 @@ Route::prefix("admin")->middleware("admin.authenticate")->group(function () {
         Route::get("gatewayone/edit","gatewayone_edit_view")->name("admin.gatewayone.edit.view");
         Route::post("gatewayone/update", "gatewayone_update")->name("admin.gatewayone.update");
         Route::post("gatewayone/status/update", "gatewayone_status_update")->name("admin.gatewayone.status.update");
+    });
+
+    /* gatewaytwo */
+    Route::controller(AdminGatewaytwoController::class)->group(function(){
+        Route::get("gatewaytwo/edit","gatewaytwo_edit_view")->name("admin.gatewaytwo.edit.view");
+        Route::post("gatewaytwo/update", "gatewaytwo_update")->name("admin.gatewaytwo.update");
+        Route::post("gatewaytwo/status/update", "gatewaytwo_status_update")->name("admin.gatewaytwo.status.update");
     });
 });
 

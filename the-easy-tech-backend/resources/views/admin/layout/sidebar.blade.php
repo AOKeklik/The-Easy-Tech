@@ -43,12 +43,12 @@
                 <li class="menu-title">Pages</li>
 
                 <li>
-                    <a href="#sidebarAuth" data-bs-toggle="collapse">
+                    <a href="#slider" data-bs-toggle="collapse">
                         <i data-feather="sliders"></i>
                         <span> Slider </span>
                         <span class="menu-arrow"></span>
                     </a>
-                    <div class="collapse" id="sidebarAuth">
+                    <div class="collapse" id="slider">
                         <ul class="nav-second-level">
                             <li>
                                 <a href="{{ route("admin.slider.view") }}" class="tp-link">Slides</a>
@@ -61,12 +61,12 @@
                 </li>
 
                 <li>
-                    <a href="#sidebarAuth" data-bs-toggle="collapse">
+                    <a href="#service" data-bs-toggle="collapse">
                         <i data-feather="tool"></i>
                         <span> Service </span>
                         <span class="menu-arrow"></span>
                     </a>
-                    <div class="collapse" id="sidebarAuth">
+                    <div class="collapse" id="service">
                         <ul class="nav-second-level">
                             <li>
                                 <a href="{{ route("admin.service.view") }}" class="tp-link">Services</a>
@@ -79,10 +79,21 @@
                 </li>
 
                 <li>
-                    <a href="{{ route("admin.gatewayone.edit.view") }}" class="tp-link">
+                    <a href="#gateway" data-bs-toggle="collapse">
                         <i data-feather="credit-card"></i>
-                        <span> Getawayone </span>
+                        <span> Getaway </span>
+                        <span class="menu-arrow"></span>
                     </a>
+                    <div class="collapse" id="gateway">
+                        <ul class="nav-second-level">
+                            <li>
+                                <a href="{{ route("admin.gatewayone.edit.view") }}" class="tp-link">Getawayone</a>
+                            </li>
+                            <li>
+                                <a href="{{ route("admin.gatewaytwo.edit.view") }}" class="tp-link">Getewaytwo</a>
+                            </li>
+                        </ul>
+                    </div>
                 </li>
 
                 <li class="menu-title mt-2">General</li>

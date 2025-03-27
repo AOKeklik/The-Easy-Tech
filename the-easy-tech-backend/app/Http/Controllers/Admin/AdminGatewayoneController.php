@@ -57,8 +57,4 @@ class AdminGatewayoneController extends Controller
             return response()->json(["error"=>["message"=>$err->getMessage()]]);
         }
     }
-    public function gatewayone_status_update (Request $request)
-    {
-
-    }
 }
