@@ -26,7 +26,8 @@ class AdminProfileController extends Controller
 	                "required",
 	                "email",
 	                Rule::unique("users","email")->ignore(auth()->user()->id)
-	            ]
+                ],
+                "avatar"=>"nullable|file|mimes:jpg,jpeg,png|max:1048576",
 	        ]);
 
 	        if(!$validator->passes())

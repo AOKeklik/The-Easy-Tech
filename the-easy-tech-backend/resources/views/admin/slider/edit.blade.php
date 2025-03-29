@@ -80,7 +80,7 @@
 
                     formData.append("_token",csrf_token)
                     formData.append("slider_id",form.find("#slider_id").val())
-                    formData.append("image",form.find("#image")[0].files[0])
+                    formData.append("image",form.find("#image")[0].files[0] ?? "")
                     formData.append("title",form.find("#title").val())
                     formData.append("desc",form.find("#desc").val())
                     formData.append("button_link",form.find("#button_link").val())

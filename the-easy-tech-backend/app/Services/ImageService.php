@@ -38,10 +38,6 @@ class ImageService
             $uploadPath = "uploads/".$path."/";
 
             if($request->hasFile("image")){
-                $request->validate([
-                    "image" => "required|file|mimes:jpg,jpeg,png|max:1024"
-                ]);
-
                 $file = $request->file("image");
 
                 if(is_file(public_path($uploadPath).$image))

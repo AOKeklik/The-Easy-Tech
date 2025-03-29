@@ -192,7 +192,7 @@
                     const csrf_token=await uptdateCSRFToken()
 
                     formData.append("_token",csrf_token)
-                    formData.append("avatar",$("#avatar")[0].files[0])
+                    formData.append("avatar",$("#avatar")[0].files[0] ?? "")
                     formData.append("name",form.find("#name").val())
                     formData.append("email",form.find("#email").val())
                     

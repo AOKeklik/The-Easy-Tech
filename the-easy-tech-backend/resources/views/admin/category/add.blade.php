@@ -1,5 +1,5 @@
 @extends("admin.layout.app")
-@section("title", "Gatewaytwo Edit")
+@section("title", "Category Add")
 @section("content")
 <div class="content">
 
@@ -25,57 +25,41 @@
                 <div class="card">
                     <div class="card-header">
                         <h5 class="card-title mb-0">Input Type</h5>
-                        <button data-app-btn="gatewaytwo-store" type="submit" class="btn btn-primary">Submit</button>
+                        <button data-app-btn="category-store" type="submit" class="btn btn-primary">Submit</button>
                     </div><!-- end card header -->
 
                     <div class="card-body">
-                        <form data-app-form="gatewaytwo-store">
+                        <form data-app-form="category-store">
                             <div class="mb-3">
-                                <label for="title" class="form-label">Slug*</label>
-                                <input type="text" class="form-control" id="slug" name="slug" value="{{ $gatewaytwo->slug }}">
-                                <small data-app-alert="gatewaytwo-store-slug" class="form-text text-danger"></small>
+                                <label for="name" class="form-label">Name*</label>
+                                <input type="text" class="form-control" id="name" name="name">
+                                <small data-app-alert="category-store-name" class="form-text text-danger"></small>
                             </div>
                             <div class="mb-3">
-                                <label for="image" class="form-label">Image</label>
-                                <input class="form-control" type="file" id="image" name="image">
-                                <small data-app-alert="gatewaytwo-store-image" class="form-text text-danger"></small>
+                                <label for="parent_id" class="form-label">Parent</label>
+                                <select class="form-select form-select-lg"  name="parent_id" id="parent_id">
+                                    <option value="">Select one</option>
+                                    @foreach($categories as $category)
+                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                    @endforeach
+                                </select>
+                                <small data-app-alert="category-store-parent_id" class="form-text text-danger"></small>
                             </div>
                             <div class="mb-3">
-                                <label for="title" class="form-label">Title*</label>
-                                <input type="text" class="form-control" id="title" name="title" value="{{ $gatewaytwo->title }}">
-                                <small data-app-alert="gatewaytwo-store-title" class="form-text text-danger"></small>
+                                <label for="slug" class="form-label">Slug*</label>
+                                <input type="text" class="form-control" id="slug" name="slug" value="">
+                                <small data-app-alert="category-store-slug" class="form-text text-danger"></small>
                             </div>
                             <div class="mb-3">
-                                <label for="title" class="form-label">Project*</label>
-                                <input type="text" class="form-control" id="project" name="project" value="{{ $gatewaytwo->project }}">
-                                <small data-app-alert="gatewaytwo-store-project" class="form-text text-danger"></small>
+                                <label for="type" class="form-label">Type*</label>
+                                <select class="form-select form-select-lg"  name="type" id="type">
+                                    <option selected>Select one</option>
+                                    <option value="page">Page</option>
+                                    <option value="blog">Blog</option>
+                                    <option value="study">Study</option>
+                                </select>
+                                <small data-app-alert="category-store-type" class="form-text text-danger"></small>
                             </div>
-                            <div class="mb-3">
-                                <label for="title" class="form-label">Review*</label>
-                                <input type="text" class="form-control" id="review" name="review" value="{{ $gatewaytwo->review }}">
-                                <small data-app-alert="gatewaytwo-store-review" class="form-text text-danger"></small>
-                            </div>
-                            <div class="mb-3">
-                                <label for="title" class="form-label">Experience*</label>
-                                <input type="text" class="form-control" id="experience" name="experience" value="{{ $gatewaytwo->experience }}">
-                                <small data-app-alert="gatewaytwo-store-experience" class="form-text text-danger"></small>
-                            </div>
-                            <div class="mb-3">
-                                <label for="title" class="form-label">Status</label>
-                                <div>
-                                    <input 
-                                    id="status"
-                                    data-gatewaytwo-id="{{ $gatewaytwo->id }}"
-                                    @if($gatewaytwo->status == 1) checked @endif
-                                    type="checkbox" data-toggle="switchbutton" data-onstyle="danger"
-                                >
-                                </div>
-                            </div>
-                            <div class="mb-3">
-                                <label for="desc" class="form-label">Desc</label>
-                                <textarea id="desc" name="desc" class="summernote form-control" rows="5" spellcheck="false">{!! $gatewaytwo->desc !!}</textarea>
-                                <small data-app-alert="gatewaytwo-store-desc" class="form-text text-danger"></small>
-                            </div> 
                         </form>
                     </div>
                 </div>
@@ -88,7 +72,7 @@
     <script>
         $(document).ready(function(){
             $(document)
-                .on("click","[data-app-btn=gatewaytwo-store]",handlerSubmit)
+                .on("click","[data-app-btn=category-store]",handlerSubmit)
                 .on("change","#slug",handlerChangeSlug)
 
 
@@ -103,31 +87,32 @@
 
                 $(e.target).val(val)
             }
+
             async function handlerSubmit (e) {
                 try {
                     e.preventDefault()
 
                     const formData=new FormData()
-                    const form = $("[data-app-form=gatewaytwo-store]")
+                    const form = $("[data-app-form=category-store]")
 
                     const csrf_token=await uptdateCSRFToken()
 
+                    console.log(form.find("#parent_id").val())
+
                     formData.append("_token",csrf_token)
-                    formData.append("image",form.find("#image")[0].files[0])
-                    formData.append("title",form.find("#title").val())
-                    formData.append("project",form.find("#project").val())
-                    formData.append("review",form.find("#review").val())
-                    formData.append("experience",form.find("#experience").val())
-                    formData.append("desc",form.find("#desc").val())
+                    formData.append("parent_id",form.find("#parent_id").val() ?? "")
+                    formData.append("name",form.find("#name").val())
                     formData.append("slug",form.find("#slug").val())
-                    formData.append("status",form.find("#status").prop("checked") ? 1 : 0)
+                    formData.append("type",form.find("#type").val())
                     
                     const store=await submit(formData)
 
                     if(store.form_error)
                         return showFormErrorMessages(store) 
 
+                    await resetForm(form)
                     await showNotification(store)
+                    redirect(store)
                 }catch(err){
                     console.log(err)
                 }finally{
@@ -142,7 +127,7 @@
 
                     const result = await $.ajax({
                         type: "POST",
-                        url: "{{ route('admin.gatewaytwo.update') }}",
+                        url: "{{ route('admin.category.store') }}",
                         data: formData,
                         contentType: false,
                         processData: false,
@@ -185,6 +170,22 @@
 
             function delay(ms) {
                 return new Promise(resolve => setTimeout(resolve, ms))
+            }
+
+            function resetForm(formSelector) {
+                $("[data-app-alert]").prev().removeClass("is-invalid")
+
+                $(formSelector)[0].reset()
+                $(formSelector).find("[data-app-alert]").html("")
+            }
+
+            async function redirect(res) {
+                // console.log(res);
+
+                if (res.success?.redirect || res.error?.redirect) {
+                    await delay(1000)
+                    window.location.href = res.success?.redirect ?? res.error?.redirect;
+                }
             }
 
             function showFormErrorMessages(res) {

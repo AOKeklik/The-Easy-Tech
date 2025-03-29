@@ -9,7 +9,7 @@
             searching: true,  // Arama işlevi aktif kalır
         })
 
-        if (table.length && table?.data().count() === 0) {
+        if (table.length === 0 && table?.data().count() < 2) {
             table?.destroy()
             table({
                 "paging": false

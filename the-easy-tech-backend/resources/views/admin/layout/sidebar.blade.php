@@ -32,13 +32,24 @@
                         <span> Dashboard </span>
                     </a>
                 </li>
-    
-                <!-- <li>
-                    <a href="landing.html" target="_blank">
-                        <i data-feather="globe"></i>
-                        <span> Landing </span>
+
+                <li>
+                    <a href="#category" data-bs-toggle="collapse">
+                        <i data-feather="tag"></i>
+                        <span> Category </span>
+                        <span class="menu-arrow"></span>
                     </a>
-                </li> -->
+                    <div class="collapse" id="category">
+                        <ul class="nav-second-level">
+                            <li>
+                                <a href="{{ route("admin.category.view") }}" class="tp-link">Categories</a>
+                            </li>
+                            <li>
+                                <a href="{{ route("admin.category.add.view") }}" class="tp-link">Add Category</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
 
                 <li class="menu-title">Sections</li>
 
@@ -115,6 +126,24 @@
                 </li>
 
                 <li class="menu-title mt-2">Pages</li>
+
+                <li>
+                    <a href="#blog" data-bs-toggle="collapse">
+                        <i data-feather="file-text"></i>
+                        <span> Blog </span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <div class="collapse" id="blog">
+                        <ul class="nav-second-level">
+                            <li>
+                                <a href="{{ route("admin.blog.view") }}" class="tp-link">Blogs</a>
+                            </li>
+                            <li>
+                                <a href="{{ route("admin.blog.add.view") }}" class="tp-link">Add Blog</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
 
             </ul>
         </div>

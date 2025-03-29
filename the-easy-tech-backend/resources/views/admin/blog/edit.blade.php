@@ -1,5 +1,5 @@
 @extends("admin.layout.app")
-@section("title", "Gatewaytwo Edit")
+@section("title", "Blog Edit")
 @section("content")
 <div class="content">
 
@@ -25,56 +25,51 @@
                 <div class="card">
                     <div class="card-header">
                         <h5 class="card-title mb-0">Input Type</h5>
-                        <button data-app-btn="gatewaytwo-store" type="submit" class="btn btn-primary">Submit</button>
+                        <button data-app-btn="blog-store" type="submit" class="btn btn-primary">Submit</button>
                     </div><!-- end card header -->
 
                     <div class="card-body">
-                        <form data-app-form="gatewaytwo-store">
+                        <form data-app-form="blog-store">
+                            <input type="hidden" id="blog_id" name="blog_id" value="{{ request("blog_id") }}">
                             <div class="mb-3">
-                                <label for="title" class="form-label">Slug*</label>
-                                <input type="text" class="form-control" id="slug" name="slug" value="{{ $gatewaytwo->slug }}">
-                                <small data-app-alert="gatewaytwo-store-slug" class="form-text text-danger"></small>
+                                <label for="category_id" class="form-label">Category*</label>
+                                <select class="form-select form-select-lg"  name="category_id" id="category_id">
+                                    <option value="">Select One</option>
+                                    @foreach($categories as $cat)
+                                        <option @if($blog->category_id === $cat->id) selected @endif value="{{ $cat->id }}">{{ $cat->name }}</option>
+                                    @endforeach
+                                </select>
+                                <small data-app-alert="category-store-category_id" class="form-text text-danger"></small>
                             </div>
                             <div class="mb-3">
-                                <label for="image" class="form-label">Image</label>
+                                <label for="image" class="form-label">Image*</label>
                                 <input class="form-control" type="file" id="image" name="image">
-                                <small data-app-alert="gatewaytwo-store-image" class="form-text text-danger"></small>
+                                <small data-app-alert="blog-store-image" class="form-text text-danger"></small>
+                            </div>
+                            <div class="mb-3">
+                                <label for="title" class="form-label">Slug*</label>
+                                <input type="text" class="form-control" id="slug" name="slug" readonly value="{{ $blog->slug }}">
+                                <small data-app-alert="service-store-slug" class="form-text text-danger"></small>
                             </div>
                             <div class="mb-3">
                                 <label for="title" class="form-label">Title*</label>
-                                <input type="text" class="form-control" id="title" name="title" value="{{ $gatewaytwo->title }}">
-                                <small data-app-alert="gatewaytwo-store-title" class="form-text text-danger"></small>
+                                <input type="text" class="form-control" id="title" name="title" value="{{ $blog->title }}">
+                                <small data-app-alert="blog-store-title" class="form-text text-danger"></small>
                             </div>
                             <div class="mb-3">
-                                <label for="title" class="form-label">Project*</label>
-                                <input type="text" class="form-control" id="project" name="project" value="{{ $gatewaytwo->project }}">
-                                <small data-app-alert="gatewaytwo-store-project" class="form-text text-danger"></small>
+                                <label for="desc" class="form-label">Desc*</label>
+                                <textarea id="desc" name="desc" class="summernote form-control" rows="5" spellcheck="false">{{ $blog->desc }}</textarea>
+                                <small data-app-alert="blog-store-desc" class="form-text text-danger"></small>
+                            </div> 
+                            <div class="mb-3">
+                                <label for="seo_title" class="form-label">Seo Title</label>
+                                <input type="text" class="form-control" id="seo_title" name="seo_title" value="{{ $blog->seo_title }}">
+                                <small data-app-alert="blog-store-seo_title" class="form-text text-danger"></small>
                             </div>
                             <div class="mb-3">
-                                <label for="title" class="form-label">Review*</label>
-                                <input type="text" class="form-control" id="review" name="review" value="{{ $gatewaytwo->review }}">
-                                <small data-app-alert="gatewaytwo-store-review" class="form-text text-danger"></small>
-                            </div>
-                            <div class="mb-3">
-                                <label for="title" class="form-label">Experience*</label>
-                                <input type="text" class="form-control" id="experience" name="experience" value="{{ $gatewaytwo->experience }}">
-                                <small data-app-alert="gatewaytwo-store-experience" class="form-text text-danger"></small>
-                            </div>
-                            <div class="mb-3">
-                                <label for="title" class="form-label">Status</label>
-                                <div>
-                                    <input 
-                                    id="status"
-                                    data-gatewaytwo-id="{{ $gatewaytwo->id }}"
-                                    @if($gatewaytwo->status == 1) checked @endif
-                                    type="checkbox" data-toggle="switchbutton" data-onstyle="danger"
-                                >
-                                </div>
-                            </div>
-                            <div class="mb-3">
-                                <label for="desc" class="form-label">Desc</label>
-                                <textarea id="desc" name="desc" class="summernote form-control" rows="5" spellcheck="false">{!! $gatewaytwo->desc !!}</textarea>
-                                <small data-app-alert="gatewaytwo-store-desc" class="form-text text-danger"></small>
+                                <label for="seo_desc" class="form-label">Seo Desc</label>
+                                <textarea id="seo_desc" name="seo_desc" class="summernote form-control" rows="5" spellcheck="false">{{ $blog->seo_desc }}</textarea>
+                                <small data-app-alert="blog-store-seo_desc" class="form-text text-danger"></small>
                             </div> 
                         </form>
                     </div>
@@ -88,39 +83,27 @@
     <script>
         $(document).ready(function(){
             $(document)
-                .on("click","[data-app-btn=gatewaytwo-store]",handlerSubmit)
-                .on("change","#slug",handlerChangeSlug)
+                .on("click","[data-app-btn=blog-store]",handlerSubmit)
 
 
-            function handlerChangeSlug (e) {
-                let val = $(e.target)
-                    .val()
-                    .toLowerCase()
-                    .trim()
-                    .replace(/[^\w\s-]/g, "")
-                    .replace(/\s+/g, "-")
-                    .replace(/-+$/g, "")
-
-                $(e.target).val(val)
-            }
             async function handlerSubmit (e) {
                 try {
                     e.preventDefault()
 
                     const formData=new FormData()
-                    const form = $("[data-app-form=gatewaytwo-store]")
+                    const form = $("[data-app-form=blog-store]")
 
                     const csrf_token=await uptdateCSRFToken()
 
                     formData.append("_token",csrf_token)
-                    formData.append("image",form.find("#image")[0].files[0])
-                    formData.append("title",form.find("#title").val())
-                    formData.append("project",form.find("#project").val())
-                    formData.append("review",form.find("#review").val())
-                    formData.append("experience",form.find("#experience").val())
-                    formData.append("desc",form.find("#desc").val())
+                    formData.append("blog_id",form.find("#blog_id").val())
+                    formData.append("image",form.find("#image")[0].files[0] ?? "")
+                    formData.append("category_id",form.find("#category_id").val() ?? "")
                     formData.append("slug",form.find("#slug").val())
-                    formData.append("status",form.find("#status").prop("checked") ? 1 : 0)
+                    formData.append("title",form.find("#title").val())
+                    formData.append("desc",form.find("#desc").val())
+                    formData.append("seo_title",form.find("#seo_title").val())
+                    formData.append("seo_desc",form.find("#seo_desc").val())
                     
                     const store=await submit(formData)
 
@@ -128,6 +111,7 @@
                         return showFormErrorMessages(store) 
 
                     await showNotification(store)
+                    redirect(store)
                 }catch(err){
                     console.log(err)
                 }finally{
@@ -142,7 +126,7 @@
 
                     const result = await $.ajax({
                         type: "POST",
-                        url: "{{ route('admin.gatewaytwo.update') }}",
+                        url: "{{ route('admin.blog.update') }}",
                         data: formData,
                         contentType: false,
                         processData: false,
@@ -185,6 +169,15 @@
 
             function delay(ms) {
                 return new Promise(resolve => setTimeout(resolve, ms))
+            }
+
+            async function redirect(res) {
+                // console.log(res);
+
+                if (res.success?.redirect || res.error?.redirect) {
+                    await delay(1000)
+                    window.location.href = res.success?.redirect ?? res.error?.redirect;
+                }
             }
 
             function showFormErrorMessages(res) {

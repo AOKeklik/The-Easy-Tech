@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminAuthController;
+use App\Http\Controllers\Admin\AdminBlogController;
+use App\Http\Controllers\Admin\AdminCategoryController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AdminGatewayoneController;
 use App\Http\Controllers\Admin\AdminGatewaytwoController;
@@ -35,11 +37,35 @@ Route::prefix("admin")->middleware("admin.authenticate")->group(function () {
     /* dashboard */
     Route::get("", [AdminController::class, "index"])->name("admin.view");
 
+    /* category */
+    Route::controller(AdminBlogController::class)->group(function() {
+        Route::get("category","index")->name("admin.category.view");
+        Route::get("category/table", "category_table_view")->name("admin.category.table.view");
+        Route::get("category/add", "category_add_view")->name("admin.category.add.view");
+        Route::get("category/edit/{category_id}", "category_edit_view")->name("admin.category.edit.view");
+        Route::post("category/store", "category_store")->name("admin.category.store");
+        Route::post("category/update", "category_update")->name("admin.category.update");
+        Route::post("category/status/update", "category_status_update")->name("admin.category.status.update");
+        Route::post("category/delete", "category_delete")->name("admin.category.delete");
+    });
+
     /* profile */
     Route::controller(AdminProfileController::class)->group(function(){
         Route::get("/profile","index")->name("admin.profile.view");
         Route::post("/profile/update", "profile_update")->name("admin.profile.update");
         Route::post("/profile/password/update", "profile_password_update")->name("admin.profile.password.update");
+    });
+
+    /* blog */
+    Route::controller(AdminBlogController::class)->group(function() {
+        Route::get("blog","index")->name("admin.blog.view");
+        Route::get("blog/table", "blog_table_view")->name("admin.blog.table.view");
+        Route::get("blog/add","blog_add_view")->name("admin.blog.add.view");
+        Route::get("blog/edit/{blog_id}","blog_edit_view")->name("admin.blog.edit.view");
+        Route::post("blog/store","blog_store")->name("admin.blog.store");
+        Route::post("blog/update","blog_update")->name("admin.blog.update");
+        Route::post("blog/status/update","blog_status_update")->name("admin.blog.status.update");
+        Route::post("blog/delete","blog_delete")->name("admin.blog.delete");
     });
 
     /* slider */
