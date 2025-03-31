@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\Setting;
 use Exception;
 
 
@@ -42,6 +43,27 @@ class ImageService
 
                 if(is_file(public_path($uploadPath).$image))
                     unlink(public_path($uploadPath).$image);
+
+                $image=$this->processImage($file,$uploadPath);
+            }
+
+            return $image;
+        }catch(Exception $err){
+            throw $err;
+        }
+    }
+    public function uploadSettingPhoto($request,$key,$path)
+    {
+        try{
+            $table = Setting::where("key", $key)->first();
+            $image = $table?->value ?? null;
+            $uploadPath = "uploads/".$path."/";
+
+            if($request->hasFile($key)){
+                $file = $request->file($key);
+
+                if($image && is_file(public_path($uploadPath.$image)))
+                    unlink(public_path($uploadPath.$image));
 
                 $image=$this->processImage($file,$uploadPath);
             }

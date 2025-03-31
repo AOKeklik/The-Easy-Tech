@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\AdminGatewayoneController;
 use App\Http\Controllers\Admin\AdminGatewaytwoController;
 use App\Http\Controllers\Admin\AdminProfileController;
 use App\Http\Controllers\Admin\AdminServiceController;
+use App\Http\Controllers\Admin\AdminSettingController;
 use App\Http\Controllers\Admin\AdminSliderController;
 use App\Http\Controllers\Admin\AdminTestimonialController;
 use Illuminate\Support\Facades\Route;
@@ -36,6 +37,12 @@ Route::post("admin/signout/submit", [AdminAuthController::class,"signout_submit"
 Route::prefix("admin")->middleware("admin.authenticate")->group(function () {
     /* dashboard */
     Route::get("", [AdminController::class, "index"])->name("admin.view");
+
+     /* settings */
+    Route::get("setting/edit",[AdminSettingController::class,"setting_edit_view"])->name("admin.setting.edit.view");
+    Route::post("setting/general/update",[AdminSettingController::class,"setting_general_update"])->name("admin.setting.general.update");
+    Route::post("setting/image/update",[AdminSettingController::class,"setting_image_update"])->name("admin.setting.image.update");
+    Route::post("setting/link/update",[AdminSettingController::class,"setting_link_update"])->name("admin.setting.link.update");
 
     /* category */
     Route::controller(AdminBlogController::class)->group(function() {

@@ -34,6 +34,13 @@
                 </li>
 
                 <li>
+                    <a href="{{ route("admin.setting.edit.view") }}" class="tp-link">
+                        <i data-feather="settings"></i>
+                        <span> Setting </span>
+                    </a>
+                </li>
+
+                <li>
                     <a href="#category" data-bs-toggle="collapse">
                         <i data-feather="tag"></i>
                         <span> Category </span>
@@ -109,7 +116,7 @@
 
                 <li>
                     <a href="#testimonial" data-bs-toggle="collapse">
-                        <i data-feather="credit-card"></i>
+                        <i data-feather="message-circle"></i>
                         <span> Testimonial </span>
                         <span class="menu-arrow"></span>
                     </a>
