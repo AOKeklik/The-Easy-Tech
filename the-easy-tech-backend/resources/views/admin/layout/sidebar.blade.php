@@ -24,12 +24,19 @@
 
             <ul id="side-menu">
 
-                <li class="menu-title">Menu</li>
+                <li class="menu-title">Genearal</li>
 
                 <li>
                     <a href="{{ route("admin.view") }}" class="tp-link">
                         <i data-feather="home"></i>
                         <span> Dashboard </span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{ route("admin.contact.view") }}" class="tp-link">
+                        <i data-feather="mail"></i>
+                        <span> Contact </span>
                     </a>
                 </li>
 
@@ -150,6 +157,13 @@
                             </li>
                         </ul>
                     </div>
+                </li>
+
+                <li>
+                    <a href="{{ route("admin.about.edit.view") }}" class="tp-link">
+                        <i data-feather="users"></i>
+                        <span> About </span>
+                    </a>
                 </li>
 
             </ul>

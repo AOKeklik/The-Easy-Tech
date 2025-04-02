@@ -41,8 +41,8 @@ class ImageService
             if($request->hasFile("image")){
                 $file = $request->file("image");
 
-                if(is_file(public_path($uploadPath).$image))
-                    unlink(public_path($uploadPath).$image);
+                if(is_file(public_path($uploadPath.$image)))
+                    unlink(public_path($uploadPath.$image));
 
                 $image=$this->processImage($file,$uploadPath);
             }

@@ -43,27 +43,27 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="title" class="form-label">Name*</label>
-                                    <input type="text" class="form-control" id="site_name" name="site_name" value="{{ $setting["site_name"] }}">
+                                    <input type="text" class="form-control" id="site_name" name="site_name" value="{{ setting('site_name') }}">
                                     <small data-app-alert="setting-general-update-site_name" class="form-text text-danger"></small>
                                 </div>
                                 <div class="mb-3">
                                     <label for="title" class="form-label">Email*</label>
-                                    <input type="text" class="form-control" id="site_email" name="site_email" value="{{ $setting["site_email"] }}">
+                                    <input type="text" class="form-control" id="site_email" name="site_email" value="{{ setting("site_email") }}">
                                     <small data-app-alert="setting-general-update-site_email" class="form-text text-danger"></small>
                                 </div>
                                 <div class="mb-3">
                                     <label for="title" class="form-label">Phone*</label>
-                                    <input type="text" class="form-control" id="site_phone" name="site_phone" value="{{ $setting["site_phone"] }}">
+                                    <input type="text" class="form-control" id="site_phone" name="site_phone" value="{{ setting("site_phone") }}">
                                     <small data-app-alert="setting-general-update-site_phone" class="form-text text-danger"></small>
                                 </div>
                                 <div class="mb-3">
                                     <label for="title" class="form-label">Address*</label>
-                                    <input type="text" class="form-control" id="site_address" name="site_address" value="{{ $setting["site_address"] }}">
+                                    <input type="text" class="form-control" id="site_address" name="site_address" value="{{ setting("site_address") }}">
                                     <small data-app-alert="setting-general-update-site_address" class="form-text text-danger"></small>
                                 </div>
                                 <div class="mb-3">
                                     <label for="title" class="form-label">Copy*</label>
-                                    <input type="text" class="form-control" id="site_copy" name="site_copy" value="{{ $setting["site_copy"] }}">
+                                    <input type="text" class="form-control" id="site_copy" name="site_copy" value="{{ setting("site_copy") }}">
                                     <small data-app-alert="setting-general-update-site_copy" class="form-text text-danger"></small>
                                 </div>
                             </form>
@@ -74,7 +74,7 @@
                                 <div class="mb-3">
                                     <label for="image" class="form-label">Favicon*</label>
                                     <div class="mb-3">
-                                        <img style="max-width: 250px" src="{{ asset("uploads/setting") }}/{{ $setting["site_favicon"] }}" alt="">
+                                        <img style="max-width: 250px" src="{{ asset("uploads/setting") }}/{{ setting("site_favicon") }}" alt="">
                                     </div>
                                     <input class="form-control" type="file" id="site_favicon" name="site_favicon">
                                     <small data-app-alert="setting-link-update-site_favicon" class="form-text text-danger"></small>
@@ -82,7 +82,7 @@
                                 <div class="mb-3">
                                     <label for="image" class="form-label">Logo*</label>
                                     <div class="mb-3">
-                                        <img style="max-width: 250px" src="{{ asset("uploads/setting") }}/{{ $setting["site_logo"] }}" alt="">
+                                        <img style="max-width: 250px" src="{{ asset("uploads/setting") }}/{{ setting("site_logo") }}" alt="">
                                     </div>
                                     <input class="form-control" type="file" id="site_logo" name="site_logo">
                                     <small data-app-alert="setting-link-update-site_logo" class="form-text text-danger"></small>
@@ -94,27 +94,27 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="title" class="form-label">Faceboo*</label>
-                                    <input type="text" class="form-control" id="link_facebook" name="link_facebook" value="{{ $setting["link_facebook"] }}">
+                                    <input type="text" class="form-control" id="link_facebook" name="link_facebook" value="{{ setting("link_facebook") }}">
                                     <small data-app-alert="setting-link-update-link_facebook" class="form-text text-danger"></small>
                                 </div>
                                 <div class="mb-3">
                                     <label for="title" class="form-label">Linkedin*</label>
-                                    <input type="text" class="form-control" id="link_linkedin" name="link_linkedin" value="{{ $setting["link_linkedin"] }}">
+                                    <input type="text" class="form-control" id="link_linkedin" name="link_linkedin" value="{{ setting("link_linkedin") }}">
                                     <small data-app-alert="setting-link-update-link_linkedin" class="form-text text-danger"></small>
                                 </div>
                                 <div class="mb-3">
                                     <label for="title" class="form-label">Twitter*</label>
-                                    <input type="text" class="form-control" id="link_twitter" name="link_twitter" value="{{ $setting["link_twitter"] }}">
+                                    <input type="text" class="form-control" id="link_twitter" name="link_twitter" value="{{ setting("link_twitter") }}">
                                     <small data-app-alert="setting-link-update-link_twitter" class="form-text text-danger"></small>
                                 </div>
                                 <div class="mb-3">
                                     <label for="title" class="form-label">Instagram*</label>
-                                    <input type="text" class="form-control" id="link_instagram" name="link_instagram" value="{{ $setting["link_instagram"] }}">
+                                    <input type="text" class="form-control" id="link_instagram" name="link_instagram" value="{{ setting("link_instagram") }}">
                                     <small data-app-alert="setting-link-update-link_instagram" class="form-text text-danger"></small>
                                 </div>
                                 <div class="mb-3">
                                     <label for="title" class="form-label">Youtube*</label>
-                                    <input type="text" class="form-control" id="link_youtube" name="link_youtube" value="{{ $setting["link_youtube"] }}">
+                                    <input type="text" class="form-control" id="link_youtube" name="link_youtube" value="{{ setting("link_youtube") }}">
                                     <small data-app-alert="setting-link-update-link_youtube" class="form-text text-danger"></small>
                                 </div>
                             </form>

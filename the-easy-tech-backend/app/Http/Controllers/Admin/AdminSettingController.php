@@ -13,8 +13,7 @@ class AdminSettingController extends Controller
 {
     function setting_edit_view(): View
     {
-        $setting=Setting::pluck("value","key");
-        return view('admin.setting.edit',compact("setting"));
+        return view('admin.setting.edit');
     }
 
     function setting_general_update(Request $request)
@@ -32,11 +31,10 @@ class AdminSettingController extends Controller
                 return response()->json(["form_error" => ["message" => $validator->errors()->toArray()]]);
     
             foreach ($validator->validated() as $key => $value) {
-                Setting::updateOrCreate(
-                    ['key' => $key],
-                    ['value' => $value]
-                );
+                Setting::setValue($key,$value);
             }
+
+            Setting::clearCache();
 		        
             return response()->json(["success"=>["message"=>"Setting general updated successfully."]]);
         }catch(Exception $err){
@@ -57,11 +55,10 @@ class AdminSettingController extends Controller
     
             foreach ($validator->validated() as $key => $file) {
                 $image = $imageService->uploadSettingPhoto($request,$key,"setting");
-                Setting::updateOrCreate(
-                    ['key' => $key],
-                    ['value' => $image]
-                );
+                Setting::setValue($key,$image);
             }
+
+            Setting::clearCache();
 		        
             return response()->json(["success"=>["message"=>"Setting image updated successfully."]]);
         }catch(Exception $err){
@@ -84,11 +81,10 @@ class AdminSettingController extends Controller
                 return response()->json(["form_error" => ["message" => $validator->errors()->toArray()]]);
     
             foreach ($validator->validated() as $key => $value) {
-                Setting::updateOrCreate(
-                    ['key' => $key],
-                    ['value' => $value]
-                );
+                Setting::setValue($key,$value);
             }
+
+            Setting::clearCache();
 		        
             return response()->json(["success"=>["message"=>"Setting link updated successfully."]]);
         }catch(Exception $err){
