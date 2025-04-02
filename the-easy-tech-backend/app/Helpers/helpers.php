@@ -6,3 +6,10 @@ if (!function_exists('setting')) {
         return app('settings')[$key] ?? $default;
     }
 }
+
+if (!function_exists('settings')) {
+    function settings()
+    {
+        return app('settings');
+    }
+}
