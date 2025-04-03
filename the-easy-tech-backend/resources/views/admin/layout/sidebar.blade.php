@@ -160,6 +160,24 @@
                 </li>
 
                 <li>
+                    <a href="#caseStudy" data-bs-toggle="collapse">
+                        <i data-feather="file-text"></i>
+                        <span> Case Study </span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <div class="collapse" id="caseStudy">
+                        <ul class="nav-second-level">
+                            <li>
+                                <a href="{{ route("admin.caseStudy.view") }}" class="tp-link">Case Studies</a>
+                            </li>
+                            <li>
+                                <a href="{{ route("admin.caseStudy.add.view") }}" class="tp-link">Add Case Study</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
+                <li>
                     <a href="{{ route("admin.about.edit.view") }}" class="tp-link">
                         <i data-feather="users"></i>
                         <span> About </span>

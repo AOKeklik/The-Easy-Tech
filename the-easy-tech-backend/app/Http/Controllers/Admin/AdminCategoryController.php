@@ -45,7 +45,7 @@ class AdminCategoryController extends Controller
             $validator = \Validator::make($request->all(),[
                 "parent_id"=>"nullable|string|exists:categories,id",
                 "name"=>"required|string",
-                "slug"=>"required|string",
+                "slug" => "required|string|unique:categories",
                 "type"=>"required|string|in:blog,page,study",
             ]);
 

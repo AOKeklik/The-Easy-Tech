@@ -27,7 +27,10 @@ class AdminBlogController extends Controller
     }
     public function blog_add_view() :View
     {
-        $categories=Category::orderBy("id","desc")->get();
+        $categories=Category::
+            where("type", "blog")->
+            orderBy("id","desc")->
+            get();
         return view("admin.blog.add",compact("categories"));
     }
     public function blog_edit_view($blog_id)

@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AdminAboutController;
 use App\Http\Controllers\Admin\AdminAuthController;
 use App\Http\Controllers\Admin\AdminBlogController;
+use App\Http\Controllers\Admin\AdminCaseStudyController;
 use App\Http\Controllers\Admin\AdminCategoryController;
 use App\Http\Controllers\Admin\AdminContactController;
 use App\Http\Controllers\Admin\AdminController;
@@ -133,6 +134,18 @@ Route::prefix("admin")->middleware("admin.authenticate")->group(function () {
         Route::post("blog/update","blog_update")->name("admin.blog.update");
         Route::post("blog/status/update","blog_status_update")->name("admin.blog.status.update");
         Route::post("blog/delete","blog_delete")->name("admin.blog.delete");
+    });
+
+    /* page - caseStudy */
+    Route::controller(AdminCaseStudyController::class)->group(function() {
+        Route::get("case-study","index")->name("admin.caseStudy.view");
+        Route::get("case-study/table", "caseStudy_table_view")->name("admin.caseStudy.table.view");
+        Route::get("case-study/add","caseStudy_add_view")->name("admin.caseStudy.add.view");
+        Route::get("case-study/edit/{caseStudy_id}","caseStudy_edit_view")->name("admin.caseStudy.edit.view");
+        Route::post("case-study/store","caseStudy_store")->name("admin.caseStudy.store");
+        Route::post("case-study/update","caseStudy_update")->name("admin.caseStudy.update");
+        Route::post("case-study/status/update","caseStudy_status_update")->name("admin.caseStudy.status.update");
+        Route::post("case-study/delete","caseStudy_delete")->name("admin.caseStudy.delete");
     });
 
     /* page - about */
