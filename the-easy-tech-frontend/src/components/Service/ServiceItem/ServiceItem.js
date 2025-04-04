@@ -19,7 +19,7 @@ const ServiceItem = ({service,i}) => {
     >
         <Link 
             href="/service/service-detail/[slug]"
-            as={`/service/service-details/${service.title.toLowerCase().replace(/ /g,"-")}`} 
+            as={`/service/service-details/${service.id}/${service.slug}`} 
             className='service-item-main h-full' 
         >
             <div className='heading flex items-center justify-between'>

@@ -5,6 +5,7 @@ import { useInView } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
 import * as Icon from '@phosphor-icons/react/dist/ssr'
+import { URL_IMG } from '@/config/config'
 
 const CaseStudyItem = ({casestudy,i}) => {
     const ref = useRef(null)
@@ -22,7 +23,7 @@ const CaseStudyItem = ({casestudy,i}) => {
         <div className='case-study-item'>
             <div className='bg-img'>
                 <Image 
-                    src={`/case${i}.webp`} 
+                    src={URL_IMG+"/caseStudy/"+casestudy.image} 
                     width={5000} 
                     height={5000} 
                     className='w-full h-full block' 

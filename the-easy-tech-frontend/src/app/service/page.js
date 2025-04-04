@@ -12,28 +12,11 @@ import ImageTextBox from '@/components/ImageTextBox/ImageTextBox'
 import Service from '@/components/Service/Service'
 import Loader from '@/components/Loader/Loader'
 
-import services from "@/data/service.json"
+import { URL_API } from '@/config/config'
+import useFetch from "@/hooks/useFetch"
 
 const page = () => {
-    const [data, setData] = useState([])
-    const [loading, setLoading] = useState(true)
-
-    useEffect(() => {
-        const fetch = async () => {
-            try{
-                setLoading(true)
-
-                await new Promise(resolve=>setTimeout(resolve, 1000))
-                await setData(services)
-
-            } catch(err){
-                console.log(err)
-            }finally{
-                setLoading(false)
-            }
-        }
-        fetch()
-    }, [])
+    const [ data, loading ] = useFetch(`${URL_API}/service/all`)
 
     return loading ? (
         <Loader /> 
@@ -59,7 +42,7 @@ const page = () => {
                     direction='left'
                 />
 
-                <Service services={data} />
+                <Service data={data} />
             </main>
 
             <Partner className='lg:mt-[100px] sm:mt-16 mt-10' /> 

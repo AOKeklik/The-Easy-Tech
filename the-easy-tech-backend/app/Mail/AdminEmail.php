@@ -41,7 +41,7 @@ class AdminEmail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'email.admin',
+            view: 'email.contact',
             with:[
                 "body"=>$this->body
             ]

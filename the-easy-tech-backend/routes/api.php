@@ -1,8 +1,6 @@
 <?php
 
-use App\Http\Controllers\Admin\AdminSliderController;
 use App\Http\Controllers\FrontendController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -39,6 +37,18 @@ Route::prefix("")/* ->middleware("") */->group(function () {
         
         /* page - blog */
         Route::get("blog/all","blog_all_get");
+        Route::get("blog/category/all","blog_category_all_get");
+        Route::get("blog/category/{slug}","blog_by_category_all_get");
         Route::get("blog/{id}/{slug}","blog_get");
+
+        /* page - case-study */
+        Route::get("case-study/all","caseStudy_all_get");
+        Route::get("case-study/{id}/{slug}","caseStudy_get");
+
+        /* page - about */
+        Route::get("about","about_get");
+
+        /* page - contact */
+        Route::post("contact","contact_submit");
     });
 });

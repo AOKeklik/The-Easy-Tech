@@ -1,9 +1,13 @@
 import React from 'react'
 import { BounceLoader  } from 'react-spinners' 
 
-const Loader = () => {
+const Loader = ({fullHeight=true}) => {
+    const containerClass=`
+        w-full flex justify-center items-center
+        ${fullHeight ? 'h-screen' : 'py-10'}
+    `
     return (
-        <div className='w-full h-screen flex justify-center items-center'>
+        <div className={containerClass}>
             <BounceLoader color='#09f' size={60} />  
         </div>
     )

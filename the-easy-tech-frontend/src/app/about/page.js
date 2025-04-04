@@ -12,32 +12,16 @@ import ImageTextBox from '@/components/ImageTextBox/ImageTextBox'
 import TextSection from '@/components/Sections/about/TextSection'
 import Loader from '@/components/Loader/Loader';
 
-import services from "@/data/service.json"
+import { URL_API } from '@/config/config'
+import useFetch from "@/hooks/useFetch"
 
 const page = () => {
-    const [data, setData] = useState([])
-    const [loading, setLoading] = useState(true)
+    const [ dataAbout, loadingAbout ] = useFetch(`${URL_API}/about`)
+    const [ data, loading ] = useFetch(`${URL_API}/service/all`)
 
-    useEffect(() => {
-        const fetch = async () => {
-            try{
-                setLoading(true)
-
-                await new Promise(resolve=>setTimeout(resolve, 1000))
-                await setData(services)
-
-            } catch(err){
-                console.log(err)
-            }finally{
-                setLoading(false)
-            }
-        }
-        fetch()
-    }, [])
-
-    return loading ? (
+    return loading | loadingAbout ? (
         <Loader />
-    ) : ( 
+    ) : dataAbout.data && ( 
         <div className="overflow-x-hidden">
             <header id="header">
                 <NavTop />
@@ -53,10 +37,10 @@ const page = () => {
                 }} />
                 <ImageTextBox 
                     img="/assessment.webp"
-                    section={<TextSection />}
+                    section={<TextSection data={dataAbout} />}
                 />
-                <Counter />
-                <Service services={data} />
+                <Counter data={dataAbout} />
+                <Service data={data} />
             </main>
 
             <Partner className='lg:mt-[100px] sm:mt-16 mt-10' /> 

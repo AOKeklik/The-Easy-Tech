@@ -2,21 +2,16 @@ import useIsActive from '@/hooks/useIsActive';
 import * as Icon from '@phosphor-icons/react/dist/ssr'
 import Image from 'next/image'
 import Link from 'next/link'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
+
+import useScrollFixedHeader from '@/hooks/useScrollFixedHeader'
 
 const NavBottom = () => {
     const isActiveItem = useIsActive
-    const [fixedHeader, setFixedHeader]=useState(false)
+    const fixedHeader = useScrollFixedHeader()
     const [toggleMenu, setToggleMenu]=useState(false)
 
-    useEffect(() => {
-        const handleScroll = () => {
-            setFixedHeader(window.scrollY > 50)
-        }
 
-        window.addEventListener("scroll", handleScroll)
-        return () => window.removeEventListener("scroll", handleScroll)
-    }, [])
 
     return (
         <div className={`header-menu bg-white ${fixedHeader ? 'fixed' : ''}`}>
@@ -52,7 +47,7 @@ const NavBottom = () => {
                         </li>
 
                         <li className={`nav-item h-full flex items-center justify-center home ${isActiveItem("/case-studies")}`}>
-                            <Link className='nav-link text-title flex items-center gap-1' href="/case-studies">
+                            <Link className='nav-link text-title flex items-center gap-1' href="/">
                                 <span>Case Studies</span>
                             </Link> 
                         </li>

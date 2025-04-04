@@ -2,7 +2,13 @@ import Link from 'next/link'
 import Image from 'next/image'
 import * as Icon from '@phosphor-icons/react/dist/ssr'
 
+import { useSelector } from 'react-redux'
+import Loader from '@/components/Loader/Loader'
+
 const Footer = () => {
+    const { data: settings, loading } = useSelector((state) => state.setting)
+    if(loading) return <Loader />
+    
     return <div className='footer-block bg-[#0f1e33] pt-[60px]'>
         <div className='container'>
             <div className='flex max-lg:flex-col max-lg:items-start gap-y-10 pb-10'>
@@ -11,17 +17,20 @@ const Footer = () => {
                         <Image width={4000} height={4000} className='footer-logo w-[145px]' src='/LogoWhite.png' />
                         <div className='text caption1 text-white'>Lorem ipsum dolor sit.</div>
                         <div className='list-social flex items-center gap-2'>
-                            <Link className='item rounded-full w-7 h-7 border-2 border-gray flex items-center justify-center' href="" target='_blank'>
-                                <i className='icon-facebook text-sm'></i>
-                            </Link> 
-                            <Link className='item rounded-full w-7 h-7 border-2 border-gray flex items-center justify-center' href='https://linkedin.com/' target='_blank'>
-                                <i className='icon-in text-xs'></i>
+                           <Link className='item rounded-full w-7 h-7 border-grey border-2 flex items-center justify-center' href={settings?.link_facebook} target='_blank' >
+                                <i className='icon-facebook text-sm'></i> 
                             </Link>
-                            <Link className='item rounded-full w-7 h-7 border-2 border-gray flex items-center justify-center' href='https://twitter.com/' target='_blank'>
-                                <i className='icon-twitter text-xs'></i>
+                            <Link className='item rounded-full w-7 h-7 border-grey border-2 flex items-center justify-center' href={settings?.link_linkedin}target='_blank' >
+                                <i className='icon-in text-[10px]'></i> 
                             </Link>
-                            <Link className='item rounded-full w-7 h-7 border-2 border-gray flex items-center justify-center' href="" target='_blank'>
-                                <i className='icon-youtube text-xs'></i>
+                            <Link className='item rounded-full w-7 h-7 border-grey border-2 flex items-center justify-center' href={settings?.link_twitter} target='_blank' >
+                                <i className='icon-twitter text-[10px]'></i> 
+                            </Link>
+                            <Link className='item rounded-full w-7 h-7 border-grey border-2 flex items-center justify-center' href={settings?.link_instagram} target='_blank' >
+                                <i className='icon-insta text-[10px]'></i> 
+                            </Link>
+                            <Link className='item rounded-full w-7 h-7 border-grey border-2 flex items-center justify-center' href={settings?.link_youtube} target='_blank' >
+                                <i className='icon-youtube text-[10px]'></i> 
                             </Link>
                         </div>  
                     </div> 
@@ -32,33 +41,33 @@ const Footer = () => {
                             <div className='item-heading text-button-sm text-white'>Quick Links</div>
                             <ul className='list-nav mt-1 text-white'>
                                 <li className='mt-3'>
-                                    <Link className='caption1 has-line-before line-white text-surface hover-underline' href='/'>About Us</Link>
+                                    <Link className='caption1 has-line-before line-white text-surface hover-underline' href='/about'>About Us</Link>
                                 </li>
                                 <li className='mt-3'>
-                                    <Link className='caption1 has-line-before line-white text-surface hover-underline' href='/'>Services</Link>
+                                    <Link className='caption1 has-line-before line-white text-surface hover-underline' href='/service'>Services</Link>
                                 </li>
                                 <li className='mt-3'>
                                     <Link className='caption1 has-line-before line-white text-surface hover-underline' href='/'>Case Studies</Link>
                                 </li>
                                 <li className='mt-3'>
-                                    <Link className='caption1 has-line-before line-white text-surface hover-underline' href='/'>Contact</Link>
+                                    <Link className='caption1 has-line-before line-white text-surface hover-underline' href='/contact'>Contact</Link>
                                 </li>
                             </ul>
                         </div>
                         <div className='footer-nav-item max-sm:hidden'>
                             <div className='item-heading text-button-sm text-white'>Pages</div>
                             <ul className='list-nav mt-1 text-white'>
-                                <li className='mt-3'>
-                                    <Link className='caption1 has-line-before line-white text-surface hover-underline' href='/'>About Us</Link>
+                            <li className='mt-3'>
+                                    <Link className='caption1 has-line-before line-white text-surface hover-underline' href='/about'>About Us</Link>
                                 </li>
                                 <li className='mt-3'>
-                                    <Link className='caption1 has-line-before line-white text-surface hover-underline' href='/'>Services</Link>
+                                    <Link className='caption1 has-line-before line-white text-surface hover-underline' href='/service'>Services</Link>
                                 </li>
                                 <li className='mt-3'>
                                     <Link className='caption1 has-line-before line-white text-surface hover-underline' href='/'>Case Studies</Link>
                                 </li>
                                 <li className='mt-3'>
-                                    <Link className='caption1 has-line-before line-white text-surface hover-underline' href='/'>Contact</Link>
+                                    <Link className='caption1 has-line-before line-white text-surface hover-underline' href='/contact'>Contact</Link>
                                 </li>
                             </ul>
                         </div>
@@ -66,16 +75,16 @@ const Footer = () => {
                             <div className='item-heading text-button-sm text-white'>Blog</div>
                             <ul className='list-nav mt-1 text-white'>
                                 <li className='mt-3'>
-                                    <Link className='caption1 has-line-before line-white text-surface hover-underline' href='/'>All Blog</Link>
+                                    <Link className='caption1 has-line-before line-white text-surface hover-underline' href='/about'>About Us</Link>
                                 </li>
                                 <li className='mt-3'>
-                                    <Link className='caption1 has-line-before line-white text-surface hover-underline' href='/'>Services</Link>
+                                    <Link className='caption1 has-line-before line-white text-surface hover-underline' href='/service'>Services</Link>
                                 </li>
                                 <li className='mt-3'>
                                     <Link className='caption1 has-line-before line-white text-surface hover-underline' href='/'>Case Studies</Link>
                                 </li>
                                 <li className='mt-3'>
-                                    <Link className='caption1 has-line-before line-white text-surface hover-underline' href='/'>Contact</Link>
+                                    <Link className='caption1 has-line-before line-white text-surface hover-underline' href='/contact'>Contact</Link>
                                 </li>
                             </ul>
                         </div> 
@@ -87,7 +96,7 @@ const Footer = () => {
                         <div className='mt-3 flex items-start'>
                             <div className='text'>
                                 <div className='cpation2 text-surface text-white'>Need Help? 24/7</div>
-                                <div className='fw-700 text-white mt-1'>+48 66677766</div> 
+                                <div className='fw-700 text-white mt-1'>{settings?.site_phone}</div> 
                             </div> 
                         </div>
                         <div className='locate mt-3 flex items-center'>
@@ -106,7 +115,7 @@ const Footer = () => {
             <div className='border-line'></div>
             <div className='footer-bottom flex items-center justify-between pt-3 pb-3'>
                 <div className='left-block flex items-center'>
-                    <div className='copy-right text-surface caption1 text-white'>@2024 EasyTech. All Rights Reserved</div> 
+                    <div className='copy-right text-surface caption1 text-white'>{settings?.site_copy}</div> 
                 </div>
                 <div className='nav-link flex items-center gap-3 text-white'>
                     <a href="#" className='text-surface caption1 hover-underline' >Terms of Services</a>

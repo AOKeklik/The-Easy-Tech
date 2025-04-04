@@ -4,7 +4,7 @@ import React, { useRef } from 'react'
 import { useInView } from 'framer-motion'
 import Link from 'next/link'
 
-const SectionLeft = () => {
+const SectionLeft = ({data}) => {
     const ref = useRef(null)
     const isInView=useInView(ref,{once:true})
 
@@ -17,8 +17,8 @@ const SectionLeft = () => {
             opacity:isInView ? 1 : 0,
         }}
     >
-        <h3 className='heading3'>Lorem ipsum dolor sit.</h3>
-        <div className='body3 text-secondary'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam, reiciendis ipsa. Reprehenderit tenetur officia temporibus!</div> 
+        <h3 className='heading3'>{data.data.title}</h3>
+        <div className='body3 text-secondary' dangerouslySetInnerHTML={{ __html: data.data.desc }} />
         <div className='button-block'>
             <Link className='button-main bg-black hover:bg-black text-white bg-blue  rounded-full' href='/'>Get Started</Link>
         </div> 

@@ -1,11 +1,11 @@
 import CounterItem from "./CounterItem/CounterItem"
 
-const Counter = () => {
+const Counter = ({data}) => {
       const counters = [
-        { title: "Business Setup Growth", number: 2.3 },
-        { title: "Business Passive Income", number: 1.7 },
-        { title: "Business Problem Solving", number: 298 },
-        { title: "Business Goal Achivever", number: 246 },
+        { title: "Business Setup Growth", number: data.data.growth },
+        { title: "Business Passive Income", number: data.data.solving },
+        { title: "Business Problem Solving", number: data.data.income },
+        { title: "Business Goal Achivever", number: data.data.achiever },
       ]
 
     return <div className='container bg-slate-100 rounded-md pt-8'>

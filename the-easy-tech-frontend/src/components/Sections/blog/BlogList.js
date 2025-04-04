@@ -3,9 +3,11 @@ import BlogItem from './BlogItem';
 import BlogItemRecent from './BlogItemRecent'
 
 import usePagination from "@/hooks/usePagination"
+import Link from 'next/link';
+import { PATH_BLOG, PATH_BLOG_CATEGORY } from '@/config/config';
 
-const BlogList = ({posts,categories}) => {
-    const { currentData, paginationControls } = usePagination(posts, 3)
+const BlogList = ({blog, category}) => {
+    const { currentData, paginationControls } = usePagination(blog.data, 3)
 
     return <div className='list-blog lg:py-[100px] sm:py-16 py-10'>
         <div className='container'>
@@ -13,7 +15,7 @@ const BlogList = ({posts,categories}) => {
                 <div className='w-full lg:w-2/3'>
                     <div className='list flex flex-col gap-y-10'>
                         {
-                            currentData.map((post,i) => <BlogItem key={i} post={post} />)
+                            currentData.map((post,i) => <BlogItem key={i} data={post} />)
                         }
                         {paginationControls}
                     </div> 
@@ -26,10 +28,11 @@ const BlogList = ({posts,categories}) => {
                     <div className='cate-block md:mt-10 mt-6'>
                         <div className='heading6'>Blog Category</div> 
                         <div className='list-nav mt-4'>
+                            <Link href={PATH_BLOG} className="text-button text-secondary mt-2 cursor-pointer font-extrabold block">All Blog</Link>
                             {
-                                categories.slice(0,3).map((cat,i) => <div key={i} className="text-button text-secondary mt-2 cursor-pointer font-extrabold">
+                                category.data.slice(0,3).map((cat,i) => <Link key={i} href={PATH_BLOG_CATEGORY+"/"+cat.slug} className="text-button text-secondary mt-2 cursor-pointer font-extrabold block">
                                         {cat.name} 
-                                    </div>
+                                    </Link>
                                 )
                             }
                         </div>  
@@ -38,7 +41,7 @@ const BlogList = ({posts,categories}) => {
                         <div className='recent-post-heading heading7'>Recent Post</div>
                         <div className='list-recent-post flex flex-col gap-6 mt-4'>
                             {
-                                posts.reverse().slice(0,3).map((post,i) => <BlogItemRecent key={i} post={post} />)
+                                blog.data.slice(0,3).map((post,i) => <BlogItemRecent key={i} data={post} />)
                             }
                         </div>
                     </div>

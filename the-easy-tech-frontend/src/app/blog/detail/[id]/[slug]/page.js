@@ -12,30 +12,17 @@ import SideMenuSection from '@/components/Sections/blog/SideMenuSection'
 import Loader from '@/components/Loader/Loader'
 import Blog from '@/components/Blog/Blog'
 
-import blog from "@/data/blog.json"
+import { URL_BLOG, URL_IMG } from '@/config/config'
+import useFetch from "@/hooks/useFetch"
 
-const page = () => {
-    const [data, setData] = useState([])
-    const [loading, setLoading] = useState(true)
 
-    useEffect(() => {
-        const fetch = async () => {
-            try{
-                setLoading(true)
+const page = ({ params }) => {
+    const { id, slug } = params
+    const [ dataBlogAll, loadingBlogAll ] = useFetch(`${URL_BLOG}/all`)
+    const [ dataBlog, loadingBlog ] = useFetch(`${URL_BLOG}/${id}/${slug}`)
 
-                await new Promise(resolve=>setTimeout(resolve, 1000))
-                await setData(blog)
 
-            } catch(err){
-                console.log(err)
-            }finally{
-                setLoading(false)
-            }
-        }
-        fetch()
-    }, [])
-
-    return loading ? (
+    return loadingBlogAll || loadingBlog ? (
         <Loader /> 
     ) : (
         <div className="overflow-x-hidden">
@@ -58,21 +45,19 @@ const page = () => {
                         <div className='flex max-xl:flex-col gap-y-8'>
                             <div className='w-full xl:w-3/4'>
                                 <div className='w-full xl:pr-[80px]'>
-                                    <div className='heading3'>Lorem ipsum dolor sit.</div>
+                                    <div className='heading3'>{dataBlog.data.title}</div>
                                     <div className='bg-img mt-5 mb-5'>
-                                        <Image width={5000} height={5000} className='w-full h-full rounded-xl' src="/gateway1.webp" /> 
+                                        <Image alt={dataBlog.data.title} width={5000} height={5000} className='w-full h-full rounded-xl' src={URL_IMG+"/blog/"+dataBlog.data.image} /> 
                                     </div>
-                                    <div className='body2 text-secondary mt-4'>
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus eum dicta commodi non repellat quibusdam necessitatibus, sit asperiores eos esse ad aut voluptatum aliquid corrupti. Illum deserunt praesentium libero mollitia?
-                                    </div> 
+                                    <div className='body2 text-secondary mt-4' dangerouslySetInnerHTML={{ __html: dataBlog.data.desc }} />
                                 </div>
                             </div>
-                            <SideMenuSection posts={data} />
+                            <SideMenuSection data={dataBlogAll} />
                         </div> 
                     </div> 
                 </div>
 
-                <Blog posts={data} />
+                <Blog data={dataBlogAll} excluding={id} />
             </main>
 
             <Partner className='lg:mt-[100px] sm:mt-16 mt-10' /> 

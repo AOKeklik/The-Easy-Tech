@@ -4,8 +4,9 @@ import React, { useRef } from 'react'
 import { useInView } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
+import { PATH_BLOG_DETAIL } from '@/config/config'
 
-const SectionSideMenu = ({posts}) => {
+const SectionSideMenu = ({data}) => {
     const ref = useRef(null)
     const isInView=useInView(ref,{once:true})
 
@@ -23,9 +24,10 @@ const SectionSideMenu = ({posts}) => {
             <div className='body3 text-secondary mt-2'>Lorem Ipsum passages, and more recently with desktop</div>
             <div className='list-nav mt-4'>
                 {
-                        posts.slice(0,4).map((post,i) => <Link
-                            href="/blog/blog-detail/[slug]"
-                            as={`/blog/blog-details/${post.title.toLowerCase().replace(/ /g,"-")}`}
+                    data.data.slice(0,4).map((post,i) => <Link
+                            key={i}
+                            href={`${PATH_BLOG_DETAIL}/[id]/[slug]`}
+                            as={`${PATH_BLOG_DETAIL}/${post.id}/${post.slug}`} 
                             className='nav-item rounded-lg flex-between p-12' 
                         >
                             <div className='text-button text-secondary'>{post.title}</div>

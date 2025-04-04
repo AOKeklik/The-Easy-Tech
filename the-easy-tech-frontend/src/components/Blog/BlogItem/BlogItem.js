@@ -5,8 +5,10 @@ import { useInView } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
 import * as Icon from '@phosphor-icons/react/dist/ssr'
+import { PATH_BLOG_DETAIL, URL_IMG } from '@/config/config';
+import { formatDate } from '@/utils/dateFormatter';
 
-const BlogItem = ({post,i}) => {
+const BlogItem = ({post}) => {
     const ref = useRef(null)
     const isInView=useInView(ref,{once:true})
 
@@ -20,26 +22,26 @@ const BlogItem = ({post,i}) => {
         }}
     >
         <Link 
-            href="/blog/blog-detail/[slug]"
-            as={`/blog/blog-details/${post.title.toLowerCase().replace(/ /g,"-")}`}
+            href={`${PATH_BLOG_DETAIL}/[slug]`}
+            as={`${PATH_BLOG_DETAIL}/${post.id}/${post.slug}`}
             className='blog-item-main h-full block bg-white border border-line overflow-hidden rounded-2xl hover-box-shadow duration-500' 
         >
 
             <div className='bg-img w-full overflow-hidden'>
-                <Image width={5000} height={5000} className='w-full h-full block' src={post.img} /> 
+                <Image width={5000} height={5000} className='w-full h-full block' src={URL_IMG+"/blog/"+post.image} alt={post.title} /> 
             </div>
 
             <div className='infor sm:p-6 p-4'>
-                <div className='caption2 py-1 px-3 bg-surface rounded-full inline-block capitalize bg-blue-100'>{post.category}</div>
+                <div className='caption2 py-1 px-3 bg-surface rounded-full inline-block capitalize bg-blue-100'>{post.category_name}</div>
                 <div className='heading6 mt-2'>{post.title}</div>
 
                 <div className='date flex items-center gap-4 mt-2'>
                     <div className='author caption2 text-secondary'>
-                    by <span className='text-on-surface'>{post.author}</span>
+                    by <span className='text-on-surface'>Admin</span>
                     </div>
                     <div className='item-date flex items-center'>
                         <Icon.CalendarBlank weight='bold'/>
-                        <span className='ml-1 caption2'>{post.date}</span>
+                        <span className='ml-1 caption2'>{formatDate(post.created_at)}</span>
                     </div> 
                 </div> 
             </div> 

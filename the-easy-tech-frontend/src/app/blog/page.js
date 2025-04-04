@@ -9,36 +9,15 @@ import BreadCrumb from '@/components/BreadCrumb/BreadCrumb'
 import Loader from '@/components/Loader/Loader'
 import BlogList from '@/components/Sections/blog/BlogList'
 
-import blog from "@/data/blog.json"
+import useFetch from '@/hooks/useFetch'
+import { URL_BLOG, URL_BLOG_CATEGORY } from '@/config/config'
 
 const page = () => {
-    const [posts, setPosts] = useState([])
-    const [categories, setCategories] = useState([])
-    const [loading, setLoading] = useState(true)
-
-    useEffect(() => {
-        const fetch = async () => {
-            try{
-                setLoading(true)
-
-                await new Promise(resolve=>setTimeout(resolve, 500))
-                await setPosts(blog)
-                await new Promise(resolve=>setTimeout(resolve, 500))
-                await setCategories(blog.map(({category})=> ({name: category})))
-
-            } catch(err){
-                console.log(err)
-            }finally{
-                setLoading(false)
-            }
-        }
-        fetch()
-    }, [])
+    const [ dataBlogAll, loadingBlogAll ] = useFetch(`${URL_BLOG}/all`)
+    const [ dataCategoryAll, loadingCategoryAll ] = useFetch(`${URL_BLOG_CATEGORY}/all`)
 
 
-    console.log(categories)
-
-    return loading ? (
+    return loadingBlogAll || loadingCategoryAll ? (
         <Loader /> 
     ) : (
         <div className="overflow-x-hidden">
@@ -56,7 +35,7 @@ const page = () => {
                     desc: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. In repudiandae asperiores iure animi. Tenetur numquam sit facere consequuntur officia dolore commodi quod maiores sapiente voluptatum explicabo amet, est earum eveniet.",
                 }} />
 
-                <BlogList posts={posts} categories={categories} />
+                <BlogList blog={dataBlogAll} category={dataCategoryAll} />
             </main>
 
             <Partner className='lg:mt-[100px] sm:mt-16 mt-10' /> 
